@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2024 a las 06:54:02
+-- Tiempo de generación: 02-10-2024 a las 23:22:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -18,16 +18,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tienda_celulares`
+-- Base de datos: `g160_db__tienda_celulares`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_pedidos`
+-- Estructura de tabla para la tabla `detalle_pedido`
 --
 
-CREATE TABLE `detalles_pedidos` (
+CREATE TABLE `detalle_pedido` (
   `id` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `id_orden` int(11) NOT NULL,
@@ -37,10 +37,10 @@ CREATE TABLE `detalles_pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `detalles_pedidos`
+-- Volcado de datos para la tabla `detalle_pedido`
 --
 
-INSERT INTO `detalles_pedidos` (`id`, `id_producto`, `id_orden`, `cantidad`, `precio`, `fecha`) VALUES
+INSERT INTO `detalle_pedido` (`id`, `id_producto`, `id_orden`, `cantidad`, `precio`, `fecha`) VALUES
 (1, 1, 1, 1, 799.99, '0000-00-00'),
 (2, 2, 1, 1, 499.99, '0000-00-00'),
 (3, 3, 2, 1, 699.99, '0000-00-00'),
@@ -75,10 +75,10 @@ INSERT INTO `orden_de_pedido` (`id`, `id_usuario`, `fecha`, `total_del_pedido`) 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `productos` (
+CREATE TABLE `producto` (
   `id` int(11) NOT NULL,
   `modelo` varchar(100) NOT NULL,
   `marca` varchar(50) NOT NULL,
@@ -91,10 +91,10 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `productos` (`id`, `modelo`, `marca`, `bateria`, `pantalla`, `camara`, `almacenamiento`, `descripcion`, `descripcion_card`) VALUES
+INSERT INTO `producto` (`id`, `modelo`, `marca`, `bateria`, `pantalla`, `camara`, `almacenamiento`, `descripcion`, `descripcion_card`) VALUES
 (1, 'Galaxy S21', 'Samsung', 4000, 6.2, 64, 128, 'Smartphone de alta gama con cámara de 64 MP y batería de larga duración.', 'Samsung Galaxy S21: 6.2\", 64 MP'),
 (2, 'iPhone 12', 'Apple', 2815, 6.1, 12, 64, 'iPhone con rendimiento excepcional y diseño elegante.', 'iPhone 12: 6.1\", 12 MP'),
 (3, 'Pixel 5', 'Google', 4080, 6, 16, 128, 'Smartphone con excelente cámara y software optimizado.', 'Google Pixel 5: 6.0\", 16 MP'),
@@ -104,10 +104,10 @@ INSERT INTO `productos` (`id`, `modelo`, `marca`, `bateria`, `pantalla`, `camara
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nombre_de_usuario` varchar(200) NOT NULL,
   `contraseña` varchar(40) NOT NULL,
@@ -119,10 +119,10 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre_de_usuario`, `contraseña`, `nombre`, `apellido`, `email`, `codigo_postal`, `direccion`) VALUES
+INSERT INTO `usuario` (`id`, `nombre_de_usuario`, `contraseña`, `nombre`, `apellido`, `email`, `codigo_postal`, `direccion`) VALUES
 (1, 'jdoe', 'contraseñaSegura123', 'John', 'Doe', 'jdoe@example.com', 10001, '123 Elm St, Springfield'),
 (2, 'maryj', 'contraseñaSegura456', 'Mary', 'Johnson', 'maryj@example.com', 10002, '456 Oak St, Springfield'),
 (3, 'clopez', 'contraseñaSegura789', 'Carlos', 'Lopez', 'clopez@example.com', 10003, '789 Pine St, Springfield'),
@@ -134,9 +134,9 @@ INSERT INTO `usuarios` (`id`, `nombre_de_usuario`, `contraseña`, `nombre`, `ape
 --
 
 --
--- Indices de la tabla `detalles_pedidos`
+-- Indices de la tabla `detalle_pedido`
 --
-ALTER TABLE `detalles_pedidos`
+ALTER TABLE `detalle_pedido`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_producto` (`id_producto`),
   ADD KEY `id_orden` (`id_orden`);
@@ -149,15 +149,15 @@ ALTER TABLE `orden_de_pedido`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `productos`
+-- Indices de la tabla `producto`
 --
-ALTER TABLE `productos`
+ALTER TABLE `producto`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indices de la tabla `usuario`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nombre_de_usuario` (`nombre_de_usuario`),
   ADD UNIQUE KEY `email` (`email`);
@@ -167,9 +167,9 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `detalles_pedidos`
+-- AUTO_INCREMENT de la tabla `detalle_pedido`
 --
-ALTER TABLE `detalles_pedidos`
+ALTER TABLE `detalle_pedido`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
@@ -179,15 +179,15 @@ ALTER TABLE `orden_de_pedido`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT de la tabla `producto`
 --
-ALTER TABLE `productos`
+ALTER TABLE `producto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -195,17 +195,17 @@ ALTER TABLE `usuarios`
 --
 
 --
--- Filtros para la tabla `detalles_pedidos`
+-- Filtros para la tabla `detalle_pedido`
 --
-ALTER TABLE `detalles_pedidos`
-  ADD CONSTRAINT `detalles_pedidos_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`),
-  ADD CONSTRAINT `detalles_pedidos_ibfk_2` FOREIGN KEY (`id_orden`) REFERENCES `orden_de_pedido` (`id`);
+ALTER TABLE `detalle_pedido`
+  ADD CONSTRAINT `detalle_pedido_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`),
+  ADD CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_orden`) REFERENCES `orden_de_pedido` (`id`);
 
 --
 -- Filtros para la tabla `orden_de_pedido`
 --
 ALTER TABLE `orden_de_pedido`
-  ADD CONSTRAINT `orden_de_pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `orden_de_pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

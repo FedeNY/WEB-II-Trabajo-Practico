@@ -8,24 +8,10 @@
   </head>
   <body>
 
-  <?php 
-  
-    $variable = "hola";
+ 
 
-    echo "<strong>" . $variable ."</strong>";
-  
+
+
     
-  ?> 
-
-
-
-
-
-
-
-
-
-
-    <script src="./js/main.js" type="module"></script>
   </body>
 </html>
