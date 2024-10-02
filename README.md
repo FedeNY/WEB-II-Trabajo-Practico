@@ -1,6 +1,6 @@
-# WEB-II-Trabajo-Practico
+<h1>  # WEB-II-Trabajo-Practico - Tienda de Celulares 📱 </h1>
 
-<h1> Tienda de Celulares 📱 </h1>
+<br>
 
 <h2>Integrantes</h2>
 
