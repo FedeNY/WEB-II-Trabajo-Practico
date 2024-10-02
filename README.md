@@ -1,5 +1,19 @@
 # WEB-II-Trabajo-Practico
 
+<h1> Tienda de Celulares 📱 </h1>
+
+<h2>Integrantes</h2>
+
+Numero de grupo : 160
+
+Federico Gerardo Massolo  
+
+DNI : 41675964
+
+Javier Ignacion Rivarola  
+
+DNI : 37667283
+
 <h2>Introduccion</h2>
 
 Este proyecto es una base de datos para un e-commerce de venta de celulares. Las funcionalidades más destacables son:
