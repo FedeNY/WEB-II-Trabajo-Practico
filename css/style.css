@@ -1,0 +1,41 @@
+main {
+  width: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: space-around;
+}
+
+.shop-section {
+  background-color: rgb(49, 189, 112);
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 6px 0px;
+}
+
+.shop-section div {
+  height: 600px;
+  background-color: rgb(150, 24, 24);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-section picture {
+  height: 75%;
+  width: 100%;
+}
+
+.shop-section div img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.shop-section div > div {
+  background-color: blue;
+  height: 25%;
+  width: auto;
+  padding: 0px 12px;
+}
