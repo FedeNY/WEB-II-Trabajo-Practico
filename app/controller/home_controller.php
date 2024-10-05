@@ -21,9 +21,9 @@ class ProductController
 
         $arr = $this->model->getProduct();
 
-        $this->view->showProduct($arr);
+       // $this->view->showProduct($arr);
 
     }
-    
+
 
 }
