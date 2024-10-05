@@ -24,5 +24,6 @@ class ProductController
         $this->view->showProduct($arr);
 
     }
+    
 
 }
