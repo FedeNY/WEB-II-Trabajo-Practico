@@ -3,26 +3,23 @@
 <?php require 'components/head.phtml'; ?>
 
 <body>
-
-
-
-
-    <main>
-        <form action="addProduct" method="POST">
-
-                <input type="text">
-
-                
-
-
-        </form>
+        <?php require 'components/nav.phtml' ?>
 
         <article class="home-product">
             <?php foreach ($product as $element): ?>
 
-                    <div></div>
+                <div>
 
-                <?php endforeach ?>
+                    <h3><?= $element->name ?></h3>
+
+                    <p><?= $element->description ?></p>
+
+                    <span><?= $element->price ?></span>
+
+                    <a href="<?php echo BASE_URL; ?>/detail/<?= $element->id ?>">Detalles</a>
+                </div>
+
+            <?php endforeach ?>
         </article>
 
     </main>

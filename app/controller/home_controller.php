@@ -1,7 +1,7 @@
 <?php
-include 'app/model/product_model.php';
-include 'app/view/product_view.php';
-class ProductController
+include 'app/model/home_model.php';
+include 'app/view/home_view.php';
+class HomeController
 {
 
     private $model;
@@ -9,19 +9,19 @@ class ProductController
 
     function __construct()
     {
-        $this->model = new ProductModel();
+        $this->model = new HomeModel();
 
-        $this->view = new ProductView();
+        $this->view = new HomeView();
 
 
     }
 
-    function getProducts()
+    function getProductsHome()
     {
 
-        $arr = $this->model->getProduct();
+        $arr = $this->model->getProductHome();
 
-       // $this->view->showProduct($arr);
+        $this->view->showHome($arr);
 
     }
 

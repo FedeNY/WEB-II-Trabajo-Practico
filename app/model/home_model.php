@@ -1,23 +1,23 @@
 <?php
 
 
-class ProductModel {
+class HomeModel {
 
 
 
     private function getConection()
     {
-        return new PDO('mysql:host=localhost;dbname=g160_db__tienda_celulares;charset=utf8', 'root', '');
+        return new PDO('mysql:host=localhost;dbname=g160_db_prueba_tienda;charset=utf8', 'root', '');
     }
 
 
 
-    function getProduct()
+    function getProductHome()
     {
 
         $db = $this->getConection();
 
-        $query = $db->prepare("SELECT * FROM producto");
+        $query = $db->prepare("SELECT * FROM product");
 
         $query-> execute();
 

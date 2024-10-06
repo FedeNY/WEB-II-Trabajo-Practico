@@ -2,17 +2,35 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+li {
+  margin-left: 24px;
+}
+
+main {
+
+display: flex;
+justify-content: end;
+}
 
 .home-product {
-
-  
+  display: flex;
+  flex-flow: row wrap;
+  height: auto;
+  background-color: red;
   width: 65%;
-
-
-
-
-
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  height: 300px;
+  flex: 0 0 33%;
+  background-color: rgb(197, 197, 197);
 }
