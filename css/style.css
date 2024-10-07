@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+
+
 nav ul {
   display: flex;
   list-style: none;
@@ -14,9 +16,8 @@ li {
 }
 
 main {
-
-display: flex;
-justify-content: end;
+  display: flex;
+  justify-content: end;
 }
 
 .home-product {
@@ -34,3 +35,9 @@ justify-content: end;
   flex: 0 0 33%;
   background-color: rgb(197, 197, 197);
 }
+
+.show {
+  display: flex;
+}
+
+.hidden {display: none;}

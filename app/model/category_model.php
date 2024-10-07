@@ -1,7 +1,7 @@
 <?php
 
 
-class ProductModel
+class CategoryModel
 {
 
 
@@ -27,16 +27,14 @@ class ProductModel
         return $arr;
 
     }
-    function getProductFilter($brand, $max_price, $min_price)
+    function getProductFilter($brand)
     {
         $db = $this->getConection();
         $query = $db->prepare("
         SELECT * FROM product 
         WHERE (brand = ? OR ? = '') 
-        AND (price >= ? OR ? IS NULL) 
-        AND (price <= ? OR ? IS NULL)
     ");
-        $query->execute([$brand, $brand, $min_price, $min_price, $max_price, $max_price]);
+        $query->execute([$brand, $brand]);
 
         $arr = $query->fetchAll(PDO::FETCH_OBJ);
 

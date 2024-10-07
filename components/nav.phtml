@@ -2,11 +2,23 @@
 
 
 
-<ul>
+    <ul>
 
-<li><a href="<?php echo BASE_URL; ?>/">Inicio</a></li>
-<li><a href="<?php echo BASE_URL; ?>/product">Product</a></li>
-</ul>
+        <li><a href="<?php echo BASE_URL; ?>/">Inicio</a></li>
+
+
+        <div id="atr">
+            <a href="<?php echo BASE_URL; ?>/phone">Celulares</a>
+            <div id="fede" class="hidden">
+
+                <?php foreach($brand as $element): ?>
+                    <a href="<?php echo BASE_URL; ?>/phone/<?php echo $element->brand ?>"><?= $element->brand ?></a>
+                <?php endforeach; ?>
+            </div>
+
+        </div>
+        </li>
+    </ul>
 
 
 </nav>
