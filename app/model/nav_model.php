@@ -1,8 +1,13 @@
 <?php
 
 
-class HomeModel {
 
+
+
+
+
+class NavCategoryModel
+{
 
 
     private function getConection()
@@ -12,19 +17,32 @@ class HomeModel {
 
 
 
-    function getProductHome()
+    function getCategory()
     {
+
+
 
         $db = $this->getConection();
 
-        $query = $db->prepare("SELECT * FROM product");
+        $query = $db->prepare('SELECT DISTINCT brand FROM product;');
 
         $query-> execute();
 
+
         $arr = $query->fetchAll(PDO::FETCH_OBJ);
+
 
         return $arr;
 
+
     }
 
+
+
+
+
+
 }
+
+
+
