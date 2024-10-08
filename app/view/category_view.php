@@ -5,18 +5,11 @@
 class CategoryView
 {
 
-
-
-
-
-
-    function showProduct($product, $brand)
+    function showProduct($product, $brand, $category)
     {
-
-
+        
         require 'template/category.phtml';
 
-        var_dump($product);
     }
 
 }

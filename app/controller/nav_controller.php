@@ -17,7 +17,6 @@ class NavCategoryController
         $this->model = new NavCategoryModel();
         $this->view = new NavCategoryView();
 
-
     }
 
     function getBrands()

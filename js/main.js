@@ -11,12 +11,6 @@ function hiddenCategoryNav() {
 }
 
 atr.addEventListener("mouseenter", showCategoryNav);
-atr.addEventListener("mouseleave", hiddenCategoryNav);
+show.addEventListener("mouseleave", hiddenCategoryNav);
 
-function cargarAction() {
-  const form = document.getElementById("categoryForm");
 
-  const ruta = document.getElementById("category");
-
-  form.action = "<?php echo BASE_URL ?>/phone/" + ruta;
-}
