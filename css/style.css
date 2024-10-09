@@ -1,22 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 * {
   margin: 0;
-  padding: 0;
+  padding: 0 24px;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
 
+/* Navegador de la pagina */
+
 nav {
-
   background-color: rgb(221, 221, 221);
-  height: auto;
+  height: 7%;
   width: 100%;
-
-
 }
-
 
 nav ul {
   display: flex;
@@ -28,74 +25,139 @@ li {
 }
 
 li div > a {
-width: 100px;
-display: flex;
-flex-direction: row;
-flex-wrap: nowrap;
-gap: 200px;
-background-color: green;
-
-}
-
-nav a{
-
-text-decoration: none;
-color: black;
-}
-
-
-
-main {
+  width: 100px;
   display: flex;
-  justify-content: end;
-  width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 200px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Zona Home */
+
+.home-news-product {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.home-news-product > a:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-product {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: auto;
+  width: 100%;
+}
+
+.home-product > a:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-product-card {
+  background-color: rgb(110, 34, 34);
+}
+
+.category-main {
+  display: flex;
+  width: 100%;
+}
+
+.category-product {
   display: flex;
   flex-flow: row wrap;
-  height: auto;
+  width: 80%;
   background-color: red;
-  width: 65%;
+  padding: 12px;
 }
-.card {
+
+.cateory-product-card {
   display: flex;
-  flex-direction: column;
-  justify-content: end;
-  height: 300px;
   flex: 0 0 33%;
-  background-color: rgb(197, 197, 197);
+  flex-direction: column;
 }
 
 .show {
   display: flex;
 }
 
-.hidden {display: none;}
-
-
-#categoryForm {
-background-color: rgb(0, 255, 221);
-display: flex;
-flex-direction: column;
-width: 50%;
+.hidden {
+  display: none;
 }
 
-.category-element {
-display: flex;
-flex-direction: column;
-}
-
-.category-element div {
-  width: 100px;
+#category-form {
+  background-color: rgb(0, 255, 221);
   display: flex;
-  background-color: red;
+  flex-direction: column;
+  width: 20%;
+}
+
+.category-form-element {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-form-element div {
+  display: flex;
+  background-color: rgb(0, 255, 55);
   justify-content: space-between;
-  }
+}
+
+.category-radio {
+  background-color: red;
+}
+
+/* Zona Admin */
+
+.admin-container-product {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.admin-container-product > div {
+  flex: 0 0 33%;
+}
 
 
 
-.category-product {
+#atr {
+position: relative;
 
-width: 50%;
+}
+
+#fede {
+  position: absolute;
+  background-color: rebeccapurple !important;
+  width: 400px;
+  z-index: 1;
+  flex-flow: row wrap;
+}
+
+.form-edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 12px;
+  padding: 12px 6px;
+  height: auto;
+  width: 15%;
+  background-color: red;
+}
+
+.form-edit > div {
+  background-color: green;
+  display: flex;
+  flex-direction: column;
 }

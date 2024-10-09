@@ -1,0 +1,64 @@
+<html lang="en">
+
+<?php require 'components/head.phtml'; ?>
+
+<body>
+
+
+
+    <?php require 'components/head.phtml'; ?>
+
+    <main>
+        <a href="<?php echo BASE_URL ?>/admin"> <-- Volver</a>
+        <img src="<?php echo BASE_URL ?>/src/img/phone_product_example.png" alt="img_product_example">
+                <form action="" class="form-edit">
+                <?php foreach ($products as $product): ?>
+                   
+
+                    <p>Id del producto: #<?= $product->id ?></p>
+                    <div>
+                        <label for="name"><?= $product->name ?></label>
+                        <input name="name" type="text" placeholder="<?= $product->name ?>">
+                    </div>
+
+                    <div>
+                        <label for="description">Descripcion</label>
+                        <textarea name="description"><?= $product->description ?></textarea>
+                    </div>
+                    <div>
+                        <label for="brand">Marca</label>
+                        <select form="brand" id="brand-select">
+                            <?php foreach ($brandsArr as $brandE): ?>
+                                <option id="brand-select" <?php echo ($product->brand == $brandE) ? 'selected' : ''; ?>
+                                    value="<?= $brandE ?>"><?= $brandE?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="price">Precio</label>
+                        <input type="number" name="price" value="<?= $product->price ?>">
+                    </div>
+                                
+
+                    <div class="config">
+                        <a href="<?php echo BASE_URL ?>/delete/<?= $product->id ?>">Borrar</a>
+
+                        <a href="<?php echo BASE_URL ?>/update/<?= $product->id ?>">Actualizar</a>
+                    </div>
+                    <?php endforeach ?>
+                </form>
+    </main>
+
+
+
+
+
+
+    <?php require 'components/footer.phtml'; ?>
+
+
+
+
+</body>
+
+</html>

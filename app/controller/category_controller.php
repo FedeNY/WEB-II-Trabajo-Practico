@@ -21,19 +21,18 @@ class CategoryController
     function getProductFilter($brandNav)
     {
 
+
+
         $brand = $_POST['brand'] ?? null;
+
 
         $brandCategory = $this->model->getCategory();
 
-        if ($brand == null && $brandNav == null) {
+        if ($brand == null || $brand == 'all' && $brandNav == null) {
             $arr = $this->model->getProducts();
-        } 
-        
-        else if( $brand == null && $brandNav !== null){
+        } else if ($brand == null && $brandNav !== null) {
             $arr = $this->model->getProductFilter($brandNav);
-        }
-        
-        else {
+        } else {
             // Llama al método de filtrado con los parámetros obtenidos
             $arr = $this->model->getProductFilter($brand);
         }
@@ -41,6 +40,12 @@ class CategoryController
         $this->view->showProduct($arr, $brand, $brandCategory);
 
     }
+
+
+
+
+
+
 
 
 

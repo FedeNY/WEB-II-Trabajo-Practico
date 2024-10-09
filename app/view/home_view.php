@@ -9,12 +9,18 @@ class HomeView
     {
     }
 
-    function showHome($product)
-{
-            require 'template/home.phtml';
-       
+    function showHome($product, $new)
+    {
+
+        $productLenght = count($product);
+
+
+        $newLenght = count($new);
+
+        require 'template/home.phtml';
+
 
     }
 
-   
+
 }

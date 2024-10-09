@@ -3,6 +3,9 @@
 include 'app/controller/home_controller.php';
 include 'app/controller/category_controller.php';
 include 'app/controller/nav_controller.php';
+include 'app/controller/admin_controller.php';
+include 'app/controller/admin_detail_controller.php';
+include 'app/controller/detail_controller.php';
 
 
 define('BASE_URL', 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
@@ -35,11 +38,32 @@ switch ($params[0]) {
 
         if (isset($params[1]) && !empty($params[1])) {
             $controller = new CategoryController();
-            $controller->getProductFilter($params[1]); 
+            $controller->getProductFilter($params[1]);
         } else {
             $controller = new CategoryController();
-            $controller->getProductFilter(null); 
+            $controller->getProductFilter(null);
         }
+        break;
+
+    case 'detail':
+        $controller = new DetailController();
+        $controller->getDetailProduct($params[1]);
+        break;
+
+    case 'admin':
+        $controller = new AdminController();
+        $controller->showAdminProduct();
+        break;
+
+    case 'edit':
+        $controller = new AdminDetailController();
+        $controller->showEditProduct($params[1]);
+        break;
+
+    case 'delete':
+        $controller = new AdminDetailController();
+        $controller->deleteAdminProduct($params[1]);
+        ;
         break;
 
     default:

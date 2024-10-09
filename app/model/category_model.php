@@ -48,9 +48,9 @@ class CategoryModel
 
         $db = $this->getConection();
 
-        $query = $db->prepare('SELECT DISTINCT brand FROM product;');
+        $query = $db->prepare('SELECT DISTINCT brand FROM product');
 
-        $query-> execute();
+        $query->execute();
 
 
         $arr = $query->fetchAll(PDO::FETCH_OBJ);

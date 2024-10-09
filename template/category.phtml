@@ -4,18 +4,19 @@
 
 <body>
 
-    <main>
-        <form id="categoryForm" action="<?php echo BASE_URL; ?>/phone/<?php echo $brand; ?> " method="POST">
-            <div class="category-element">
-                <?php foreach ($category as $brand): ?>
+    <main class="category-main">
+        <form id="category-form" action="" method="POST">
+            <div class="category-form-element">
+                <?php foreach ($category as $index => $brand): ?>
                     <div>
-                        <label for="brand"><?= $brand->brand ?></label>
-                        <input type="radio" class="category-radio" name="brand" value="<?= $brand->brand ?>">
+                        <label for="brand-<?= $index ?>"><?= $brand->brand ?></label>
+                        <input type="radio" id="brand-<?= $index ?>" class="category-radio" name="brand"
+                            value="<?= $brand->brand ?>">
                     </div>
                 <?php endforeach; ?>
                 <div>
-                    <label class="category-radio" for="brand">Todos</label>
-                    <input type="radio" name="brand" value="">
+                    <label for="brand-all">Todos</label>
+                    <input id="brand-all" class="category-radio" type="radio" name="brand" value="all">
                 </div>
             </div>
 
@@ -26,8 +27,8 @@
         <article class="category-product">
             <?php foreach ($product as $element): ?>
 
-                <div class="card">
-
+                <div class="cateory-product-card">
+                    <img src="<?php echo BASE_URL ?>/src/img/phone_product_example.png" alt="img_product_example">
                     <h3><?= $element->name ?></h3>
 
                     <p><?= $element->description ?></p>
@@ -52,19 +53,18 @@
 <script>
 
     const ruta = document.querySelectorAll(".category-radio");
-    const form = document.getElementById("categoryForm");
+    const form = document.getElementById("category-form");
 
     ruta.forEach((element) => {
         element.addEventListener("click", function (e) {
+            const BASE_URL = "<?php echo BASE_URL ?>/phone";
+            const selectedValue = e.target.value;
 
-            const BASE_URL = "<?php echo BASE_URL ?>";
+            // Cambia la acción del formulario según el valor seleccionado
+            form.action = selectedValue !== 'all' ? `${BASE_URL}/${selectedValue}` : `${BASE_URL}`;
 
-            // Obtener el valor del radio button seleccionado
-            const selectedValue = e.target.value; // Usa e.target para obtener el valor del elemento que se clickeó
 
-            console.log(selectedValue); // Para verificar qué valor se está obteniendo
-
-            form.action = `${BASE_URL}/phone/${selectedValue}`;
+            // Verifica la acción configurada
         });
     });
 

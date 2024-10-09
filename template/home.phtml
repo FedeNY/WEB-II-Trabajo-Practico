@@ -4,22 +4,69 @@
 
 <body>
 
-        <article class="home-product">
-            <?php foreach ($product as $element): ?>
 
-                <div>
 
-                    <h3><?= $element->name ?></h3>
 
-                    <p><?= $element->description ?></p>
 
-                    <span><?= $element->price ?></span>
+    <h2>Novedades (<?= $newLenght ?>)</h2>
 
-                    <a href="<?php echo BASE_URL; ?>/detail/<?= $element->id ?>">Detalles</a>
-                </div>
 
-            <?php endforeach ?>
-        </article>
+    <article class="home-news-product">
+
+        <?php foreach ($new as $element): ?>
+
+
+            <div class="home-product-card">
+
+                <img src="<?php echo BASE_URL ?>/src/img/phone_product_example.png" alt="img_product_example">
+
+                <h3><?= $element->name ?></h3>
+
+                <p><?= $element->description ?></p>
+
+                <span><?= $element->price ?></span>
+
+                <a href="<?php echo BASE_URL; ?>/detail/<?= $element->id ?>">Detalles</a>
+            </div>
+
+        <?php endforeach ?>
+        <a  href="<?php echo BASE_URL ?>/phone/">
+
+        ver más
+        </a>
+    </article>
+
+    <h2>Productos (<?= $productLenght ?>)</h2>
+
+    <article class="home-product">
+
+
+
+
+
+        <?php foreach ($product as $element): ?>
+
+            <div class="home-product-card">
+
+                <img src="<?php echo BASE_URL ?>/src/img/phone_product_example.png" alt="img_product_example">
+
+                <h3><?= $element->name ?></h3>
+
+                <p><?= $element->description ?></p>
+
+                <span><?= $element->price ?></span>
+
+                <a href="<?php echo BASE_URL; ?>/detail/<?=  $element->id ?>">Detalles</a>
+            </div>
+
+          
+
+        <?php endforeach ?>
+        <a  href="<?php echo BASE_URL ?>/phone">
+
+ver más
+</a>
+    </article>
 
     </main>
 

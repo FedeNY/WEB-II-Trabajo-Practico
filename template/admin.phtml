@@ -1,0 +1,55 @@
+<html lang="en">
+
+<?php require 'components/head.phtml'; ?>
+
+<body>
+
+
+
+
+
+    <main>
+
+
+        <article class="admin-container-product">
+
+            <?php foreach ($product as $element): ?>
+                <img src="<?php echo BASE_URL ?>/src/img/phone_product_example.png" alt="img_product_example">
+                <a href="<?php echo BASE_URL ?>/edit/<?= $element-> id ?>" class="card">
+
+            
+                    <h3><?= $element->name ?></h3>
+
+                    <p><?= $element->description ?></p>
+
+                    <span><?= $element->price ?></span>
+
+                </a>
+
+            <?php endforeach ?>
+
+
+
+
+
+
+
+
+        </article>
+
+
+    </main>
+
+
+
+
+
+
+    <?php require 'components/footer.phtml'; ?>
+
+
+
+
+</body>
+
+</html>

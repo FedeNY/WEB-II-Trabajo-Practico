@@ -7,13 +7,14 @@ class NavCategoryView
 
 
 
-    function BrandDisplay($brand){
-        
-    
+    function BrandDisplay($brand)
+    {
+
+
         require 'components/nav.phtml';
-    
-    
-    
+
+
+
     }
 
 }
