@@ -1,23 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="<?php echo BASE_URL ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/css/style.css">
+    <title>Tienda de Celulares</title>
+</head>
 <nav>
-
-
-
     <ul>
-
-        <li><a href="<?php echo BASE_URL; ?>/">Inicio</a></li>
-
-
-        <li id="atr">
-            <a href="<?php echo BASE_URL; ?>/phone">Celulares</a>
-            <div id="fede" class="hidden">
-                <?php foreach($brand as $element): ?>
-                    <a href="<?php echo BASE_URL; ?>/phone/<?php echo $element->brand ?>"><?= $element->brand ?></a>
+        <li><a href="<?php echo BASE_URL; ?>/">inicio</a></li>
+        <li id="nav-category">
+            <a href="<?php echo BASE_URL; ?>/category">celulares</a>
+            <div id="brand-container" class="hidden">
+                <?php foreach ($brand as $element): ?>
+                    <a href="<?php echo BASE_URL; ?>/category/<?php echo $element->brand ?>"><?= $element->brand ?></a>
                 <?php endforeach; ?>
             </div>
+        </li>
+        <?php
+        if (isset($_SESSION['Rol']) && $_SESSION['Rol'] === "admin") {
+            echo "<li><a href='" . BASE_URL . "/admin'>admin</a></li>";
+        }
+        ?>
+        <li class="nav-user">
+            <img src="<?php echo isset($_SESSION['Id']) ? $_SESSION['Img'] : 'https://cdn-icons-png.flaticon.com/512/3736/3736502.png'; ?>" alt="img_perfil">
+            <div>
+                <p><?php echo isset($_SESSION['Id']) ? $_SESSION['User'] : "Invitado"; ?></p>
+                <a href="<?php echo BASE_URL . '/' . (isset($_SESSION['Id']) ? 'logout' : 'login'); ?>">
+                    <?php echo isset($_SESSION['Id']) ? "Cerrar sesión" : "Iniciar sesión"; ?>
+                </a>
+            </div>
+        </li>
 
-        </li>
-        </li>
+
     </ul>
-
-
 </nav>

@@ -20,8 +20,12 @@ class HomeController
     {
 
         $arr = $this->model->getProductHome();
+        $arrNews = $this->model->getNewsHome();
 
-        $this->view->showHome($arr);
+
+
+
+        $this->view->showHome($arr, $arrNews);
 
     }
 

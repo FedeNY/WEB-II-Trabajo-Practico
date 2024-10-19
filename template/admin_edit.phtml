@@ -1,0 +1,109 @@
+<body>
+    <main class="main-admin-edit">
+        <a class="back-admin-edit" href="<?php echo BASE_URL; ?>/admin">Volver</a>
+        <?php foreach ($products as $element): ?>
+            <form class="form-add-product" action="<?php echo BASE_URL ?>/update/<?= $element->id ?>" method="POST">
+                <div class="edit-container-img">
+                    <img src="<?= $element->img ?>" width="100%" alt="img_phone_edit">
+                    <div class="edit-container-url">
+                        <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <mask id="mask0_1358_2896" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3"
+                                    width="18" height="18">
+                                    <path
+                                        d="M3 11C3 7.22876 3 5.34315 4.17157 4.17157C5.34315 3 7.22876 3 11 3H13C16.7712 3 18.6569 3 19.8284 4.17157C21 5.34315 21 7.22876 21 11V13C21 16.7712 21 18.6569 19.8284 19.8284C18.6569 21 16.7712 21 13 21H11C7.22876 21 5.34315 21 4.17157 19.8284C3 18.6569 3 16.7712 3 13V11Z"
+                                        fill="#273B4A"></path>
+                                </mask>
+                                <g mask="url(#mask0_1358_2896)">
+                                    <path
+                                        d="M5.40989 12.5901L5.25713 12.7429C4.27646 13.7235 3.78613 14.2139 3.49264 14.8158C3.39066 15.025 3.30712 15.2427 3.24299 15.4664C3.05843 16.1102 3.09488 16.8027 3.16777 18.1877L3.5 24.5H21V19.7573C21 18.3059 21 17.5802 20.7614 16.9207C20.6962 16.7404 20.6181 16.565 20.5277 16.3959C20.1971 15.7774 19.6577 15.2919 18.5789 14.321L18.3643 14.1279C17.4682 13.3214 17.0202 12.9182 16.5078 12.8039C16.1864 12.7322 15.8523 12.741 15.5352 12.8295C15.0295 12.9705 14.6033 13.3967 13.7508 14.2492C13.1184 14.8816 12.8023 15.1977 12.4625 15.2406C12.2519 15.2672 12.0383 15.226 11.8526 15.1231C11.5531 14.9572 11.3742 14.5399 11.0166 13.7053C10.2559 11.9304 9.87554 11.0429 9.22167 10.7151C8.89249 10.5501 8.52413 10.4792 8.1572 10.5101C7.42836 10.5716 6.75554 11.2445 5.40989 12.5901L5.40989 12.5901Z"
+                                        fill="#2A4157" fill-opacity="0.24" stroke="#222222"></path>
+                                </g>
+                                <path
+                                    d="M3 11C3 7.22876 3 5.34315 4.17157 4.17157C5.34315 3 7.22876 3 11 3H13C16.7712 3 18.6569 3 19.8284 4.17157C21 5.34315 21 7.22876 21 11V13C21 16.7712 21 18.6569 19.8284 19.8284C18.6569 21 16.7712 21 13 21H11C7.22876 21 5.34315 21 4.17157 19.8284C3 18.6569 3 16.7712 3 13V11Z"
+                                    stroke="#222222" stroke-width="1.2"></path>
+                                <circle cx="16.5" cy="7.5" r="1.5" fill="#222222"></circle>
+                            </g>
+                        </svg>
+                        <div>
+                            <label for="url-img">Url de la Imagen</label>
+                            <input type="text" name="img-url" value="<?= $element->img ?>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <h1>Editar producto</h1>
+                    <div class="form-date">
+                        <div class="name">
+                            <label for="name">Nombre</label>
+                            <input name="name" value="<?= $element->name ?>" type="text">
+                        </div>
+
+                        <div class="description">
+                            <label for="description">Descripcion</label>
+                            <textarea name="description"><?= $element->description ?></textarea>
+                        </div>
+
+                        <div class="specifications">
+                            <div><label for="camera">Camara</label><input step="any" required value="<?= $element->camera ?>" type="number" name="camera"></div>
+                            <div><label for="system">Sistema</label><input step="any" value="<?= $element->system ?>" required type="text" name="system"></div>
+                            <div><label for="screen">Pantalla</label><input step="any" required  value="<?= $element->screen ?>" type="number" name="screen"></div>
+                        </div>
+
+                        <div class="container-brand">
+                            <div class="brand-select">
+                                <label for="brand-select">Marca</label>
+                                <select name="brand-select" id="brand-select">
+                                    <?php foreach ($category as $brands): ?>
+                                        <option value="<?= $brands->brand ?>" <?= $element->brand == $brands->brand ? "selected" : "" ?>><?= $brands->brand ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                            <div class="gamma">
+                                <label for="gamma">Gama</label>
+                                <select name="gamma">
+                                    <option value="low" <?= $element->gamma == "low" ? "selected" : "" ?>>Baja</option>
+                                    <option value="medium" <?= $element->gamma == "medium" ? "selected" : "" ?>>Media</option>
+                                    <option value="high" <?= $element->gamma == "high" ? "selected" : "" ?>>Alta</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="container-price">
+
+                            <div><label for="price">Price</label><input step="any" type="number"  value="<?= $element->price ?>"
+                                    name="price"></div>
+                            <div><label for="offer">Oferta</label> <input step="any" type="number" min="0" max="99" value="<?= $element->offer ?>"
+                                    name="offer"></div>
+                            <div><label for="stock">Stock</label><select name="stock">
+                                    <option value="0" <?= $element->stock == 0 ? "selected" : "" ?>>No</option>
+                                    <option value="1" <?= $element->stock == 1 ? "selected" : "" ?>>Si</option>
+                                </select></div>
+
+                        </div>
+
+                        <div class="quota">
+                            <label for="quota">Cuotas</label>
+                            <select name="quota">
+                                <option value="0" <?= $element->quota == 0 ? "selected" : "" ?>>No</option>
+                                <option value="6" <?= $element->quota == 6 ? "selected" : "" ?>>6 Cuotas</option>
+                                <option value="12" <?= $element->quota == 12 ? "selected" : "" ?>>12 Cuotas</option>
+                                <option value="612" <?= $element->quota == 612 ? "selected" : "" ?>>3 y 12 Cuotas</option>
+                            </select>
+                        </div>
+
+                        <div class="continer-button">
+                            <button type="submit">Guardar</button>
+                            <a href="<?php echo BASE_URL ?>/admin">Cancelar</a>
+                            <a href="<?php echo BASE_URL ?>/delete/<?= $element->id ?>">Borrar</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            </form>
+    </main>
+</body>
+
+</html>

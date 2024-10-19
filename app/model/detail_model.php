@@ -1,6 +1,12 @@
 <?php
 
-class NavCategoryModel
+
+
+
+
+
+
+class DetailModel
 {
 
 
@@ -8,18 +14,22 @@ class NavCategoryModel
     {
         return new PDO('mysql:host=localhost;dbname=g160_db_prueba_tienda;charset=utf8', 'root', '');
     }
-    function getCategory()
+
+    function getProductId($id)
     {
 
         $db = $this->getConection();
 
-        $query = $db->prepare('SELECT DISTINCT brand FROM category');
+        $query = $db->prepare('SELECT * FROM product WHERE id = ?');
 
-        $query->execute();
+        $query->execute([$id]);
 
         $arr = $query->fetchAll(PDO::FETCH_OBJ);
 
-
         return $arr;
+
+
+
     }
+
 }

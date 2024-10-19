@@ -9,12 +9,12 @@ class HomeView
     {
     }
 
-    function showHome($product)
-{
-            require 'template/home.phtml';
-       
+    function showHome($product, $offer)
+    {
+        require 'template/home.phtml';
+
 
     }
 
-   
+
 }
