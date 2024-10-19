@@ -1,18 +1,9 @@
 <?php
 
-
 class AdminEditView
 {
-
-
-
-
-
-    function showEditView($products, $brandsArr)
+    function showEditView($products, $category,$brandStatus)
     {
-       
         require 'template/admin_edit.phtml';
-
     }
-
 }

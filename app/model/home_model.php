@@ -16,7 +16,7 @@ class HomeModel
     
         $db = $this->getConection();
 
-        $query = $db->prepare("SELECT * FROM product ORDER BY id DESC LIMIT 4;");
+        $query = $db->prepare('SELECT * FROM product WHERE offer != 0 AND stock = 1  ORDER BY id DESC LIMIT 5 ');
 
         $query->execute();
 
@@ -32,7 +32,7 @@ class HomeModel
 
         $db = $this->getConection();
 
-        $query = $db->prepare("SELECT * FROM product LIMIT 8");
+        $query = $db->prepare('SELECT * FROM product WHERE stock = 1  LIMIT 10');
 
         $query->execute();
 

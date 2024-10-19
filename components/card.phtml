@@ -1,0 +1,35 @@
+<a href="<?php echo BASE_URL; ?>/detail/<?= $element->id ?>"
+    class="product-card <?php echo $element->stock == 1 ? "" : "card-disabled" ?>">
+    <img class="product-card-img" src="<?= $element->img ?>" alt="img_product_example">
+    <div class="card-body">
+        <h3><?= $element->name ?></h3>
+        <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sid</p>
+        <p>stock: <span
+                class="<?= $element->stock == 1 ? "stock" : "no-stock" ?>"><?= $element->stock == 1 ? "disponible" : "no disponible" ?></span>
+        </p>
+        <div class="card-price">
+            <div class="card-offer">
+                <span class="<?= $element->offer > 0 ? "offert" : "" ?>"><?= $element->price ?></span><span
+                    class="<?= $element->offer_price == 0 ? "hidden" : "" ?>"> <?= $element->offer ?>%
+                    <?= $element->offer_price ?></span>
+            </div>
+            <p class="quota">
+                <?php
+                switch ($element->quota) {
+                    case 0:
+                        break;
+                    case 6:
+                        echo "6 Cuotas sin interés";
+                        break;
+                    case 12:
+                        echo "12 Cuotas sin interés";
+                        break;
+                    case 612:
+                        echo "3 y 12 Cuotas sin interés";
+                        break;
+                }
+                ?>
+            </p>
+        </div>
+    </div>
+</a>

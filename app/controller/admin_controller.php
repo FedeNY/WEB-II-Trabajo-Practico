@@ -3,38 +3,46 @@
 require 'app/model/admin_model.php';
 require 'app/view/admin_view.php';
 
+class AdminController
+{
 
+    private $model;
+    private $view;
 
-class AdminController {
+    function __construct()
+    {
+        $this->model = new AdminModel;
+        $this->view = new AdminView;
+    }
 
+    function showAdminProduct()
+    {
+        $arr = $this->model->getProducts();
+        $brand = $this->model->getCategory();
+        $this->view->showAdminView($arr, $brand);
+    }
 
+    function createBrand()
+    {
+        $newBrand = htmlspecialchars($_POST['new-brand'], ENT_QUOTES, 'UTF-8');
 
-private $model;
-private $view;
+        if (isset($newBrand)) {
+            $newBrand = strtolower($newBrand);
+            $this->model->sendCategory($newBrand);
+        }
 
+        header("Location:" . BASE_URL . "/admin");
+    }
+    function deleteBrand()
+    {
 
+        $brand = htmlspecialchars($_POST['delete-brand'], ENT_QUOTES, 'UTF-8');
 
-function __construct() {
+        if ($brand !== 'invalido') {
 
-    $this->model = new AdminModel;
-    $this->view = new AdminView;
+            $this->model->deleteCategory($brand);
+        }
 
-}
-
-
-
-function showAdminProduct() {
-
-
-    $arr=$this->model->getProducts();
-
-
-    $this->view->showAdminView($arr);
-
-
-}
-
-
-
-
+        header("Location:" . BASE_URL . "/admin");
+    }
 }

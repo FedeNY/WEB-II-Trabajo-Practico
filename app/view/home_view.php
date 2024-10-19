@@ -9,14 +9,8 @@ class HomeView
     {
     }
 
-    function showHome($product, $new)
+    function showHome($product, $offer)
     {
-
-        $productLenght = count($product);
-
-
-        $newLenght = count($new);
-
         require 'template/home.phtml';
 
 

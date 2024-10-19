@@ -25,13 +25,12 @@ class CategoryModel
         $arr = $query->fetchAll(PDO::FETCH_OBJ);
 
         return $arr;
-
     }
     function getProductFilter($brand)
     {
         $db = $this->getConection();
         $query = $db->prepare("
-        SELECT * FROM product 
+        SELECT * FROM product
         WHERE (brand = ? OR ? = '') 
     ");
         $query->execute([$brand, $brand]);
@@ -44,21 +43,17 @@ class CategoryModel
     function getCategory()
     {
 
-
-
         $db = $this->getConection();
 
-        $query = $db->prepare('SELECT DISTINCT brand FROM product');
+        $query = $db->prepare('SELECT DISTINCT brand FROM category');
 
         $query->execute();
 
 
         $arr = $query->fetchAll(PDO::FETCH_OBJ);
 
-
         return $arr;
-
-
     }
+
 
 }

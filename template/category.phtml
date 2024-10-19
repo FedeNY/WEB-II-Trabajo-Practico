@@ -1,11 +1,6 @@
-<html lang="en">
-
-<?php require 'components/head.phtml'; ?>
-
 <body>
-
     <main class="category-main">
-        <form id="category-form" action="" method="POST">
+        <form id="category-form" action="<?php echo BASE_URL ?>/category" method="POST">
             <div class="category-form-element">
                 <?php foreach ($category as $index => $brand): ?>
                     <div>
@@ -19,55 +14,15 @@
                     <input id="brand-all" class="category-radio" type="radio" name="brand" value="all">
                 </div>
             </div>
-
             <button type="submit">Filtrar</button>
-
         </form>
-
         <article class="category-product">
             <?php foreach ($product as $element): ?>
-
-                <div class="cateory-product-card">
-                    <img src="<?php echo BASE_URL ?>/src/img/phone_product_example.png" alt="img_product_example">
-                    <h3><?= $element->name ?></h3>
-
-                    <p><?= $element->description ?></p>
-
-                    <span><?= $element->price ?></span>
-
-                    <a href="<?php echo BASE_URL; ?>/detail/<?= $element->id ?>">Detalles</a>
-                </div>
-
+                <?php require 'components/card.phtml' ?>
             <?php endforeach ?>
         </article>
-
     </main>
-
     <?php require 'components/footer.phtml'; ?>
-
 </body>
 
 </html>
-
-
-<script>
-
-    const ruta = document.querySelectorAll(".category-radio");
-    const form = document.getElementById("category-form");
-
-    ruta.forEach((element) => {
-        element.addEventListener("click", function (e) {
-            const BASE_URL = "<?php echo BASE_URL ?>/phone";
-            const selectedValue = e.target.value;
-
-            // Cambia la acción del formulario según el valor seleccionado
-            form.action = selectedValue !== 'all' ? `${BASE_URL}/${selectedValue}` : `${BASE_URL}`;
-
-
-            // Verifica la acción configurada
-        });
-    });
-
-
-
-</script>
