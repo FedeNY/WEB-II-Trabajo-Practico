@@ -8,11 +8,12 @@ Numero de grupo : 160
 
 Federico Gerardo Massolo  
 
+DNI : 41675964
+
 <h2> Importante </h2>
  
 mi compañero me informo que dejo la cursada
 
-DNI : 41675964
 
 Javier Ignacion Rivarola  
 
