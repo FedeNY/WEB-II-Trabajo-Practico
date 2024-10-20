@@ -2,6 +2,7 @@
     <main class="category-main">
         <form id="category-form" action="<?php echo BASE_URL ?>/category" method="POST">
             <div class="category-form-element">
+                <h1>Cateogrias</h1>
                 <?php foreach ($category as $index => $brand): ?>
                     <div>
                         <label for="brand-<?= $index ?>"><?= $brand->brand ?></label>
@@ -13,8 +14,9 @@
                     <label for="brand-all">Todos</label>
                     <input id="brand-all" class="category-radio" type="radio" name="brand" value="all">
                 </div>
+                <button type="submit">Filtrar</button>
             </div>
-            <button type="submit">Filtrar</button>
+            
         </form>
         <article class="category-product">
             <?php foreach ($product as $element): ?>

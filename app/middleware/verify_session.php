@@ -1,7 +1,5 @@
 <?php
 
-
-
 function sessionAuthMiddleware($res, $state)
 {
     if (!isset($_SESSION)) {
