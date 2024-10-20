@@ -32,7 +32,7 @@ class HomeModel
 
         $db = $this->getConection();
 
-        $query = $db->prepare('SELECT * FROM product WHERE stock = 1  LIMIT 10');
+        $query = $db->prepare('SELECT * FROM product WHERE stock = 1  LIMIT 11');
 
         $query->execute();
 

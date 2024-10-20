@@ -11,6 +11,7 @@ require_once 'app/controller/admin_edit_controller.php';
 require_once 'app/middleware/verify_session.php';
 require_once 'libs/response.php';
 require_once 'app/controller/login_controller.php';
+require_once 'app/controller/register_controller.php';
 
 define('BASE_URL', 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
 
@@ -27,7 +28,7 @@ $params = explode('/', $action);
 
 // Si el usuario pasa por login no se ejecuta el nav
 
-if ($params[0] !== 'showLogin') {
+if ($params[0] !== 'showLogin' && $params[0] !== 'showRegister') {
     sessionAuthMiddleware($res, true);
     $navcontroller = new NavCategoryController();
     $navcontroller->getBrands();
@@ -114,8 +115,17 @@ switch ($params[0]) {
 
     case 'logout':
         $controller = new UserController();
-        $controller->logOut();;
+        $controller->logOut();
         break;
+
+    case 'showRegister':
+        $controller = new RegisterController;
+        $controller->showRegister();
+        break;
+
+    case 'register':
+        $controller = new RegisterController;
+        $controller->register();break;
     default:
         echo ('404 Page not found');
         break;

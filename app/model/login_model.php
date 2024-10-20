@@ -8,14 +8,14 @@ class UserModel
     }
 
 
-    function getUserByEmail($email)
+    function getUserByEmail($user)
     {
 
         $db = $this->getConection();
 
-        $query = $db->prepare('SELECT * FROM user WHERE email = ?');
+        $query = $db->prepare('SELECT * FROM user WHERE `name`= ?');
 
-        $query->execute([$email]);
+        $query->execute([$user]);
 
         $user = $query->fetch(PDO::FETCH_OBJ);
 
