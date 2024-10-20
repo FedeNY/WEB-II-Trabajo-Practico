@@ -45,5 +45,3 @@ Este proyecto es una base de datos para un e-commerce de venta de celulares. Las
  <hr>
  <li><strong>Función de compra</strong>: Por ahora, esa función todavía no está vigente, aunque la tabla y relación están creadas, como se puede apreciar en el diagrama. No es requerida, por lo que tengo entendido, para esta etapa del proyecto. Aun así, si un usuario intenta comprar y no está logueado, será redireccionado a la página de login para registrarse o iniciar sesión si lo requiere.</li> 
  <hr>
- <li><strong>Register </strong>: El registro es funcional; si bien no tiene un mensaje de error, cumple la función de comparar y confirmar la contraseña para luego ser encriptada. Si se intenta registrarse con un email o nombre de usuario ya registrado, lanzará un error y no podrá registrarse, ya que son datos únicos.</li> 
-</ul>
