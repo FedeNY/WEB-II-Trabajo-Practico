@@ -3,16 +3,13 @@
 const filterCategory = document.querySelectorAll(".category-radio");
 const formCategory = document.querySelector("#category-form");
 
-if (formCategory ) {
-  const BASE_URL = form.action;
-}
-
-
 filterCategory.forEach((element) => {
   element.addEventListener("click", function (e) {
-    const selectedValue = e.target.value; 
-    formCategory.action = 
-    selectedValue !== "all" ? `${BASE_URL}/${selectedValue}` : `${BASE_URL}`;
+    const BASE_URL = formCategory.action;
+    const selectedValue = e.target.value;
+    console.log(BASE_URL);
+    formCategory.action =
+      selectedValue !== "all" ? `${BASE_URL}/${selectedValue}` : `${BASE_URL}`;
   });
 });
 
