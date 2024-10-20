@@ -8,7 +8,7 @@ Numero de grupo : 160
 
 Federico Gerardo Massolo  
 
-<h2> Importante <h2>
+<h2> Importante </h2>
  
 mi compañero me informo que dejo la cursada
 
