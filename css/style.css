@@ -11,6 +11,18 @@ header {
   padding: 0 24px;
 }
 
+footer {
+  margin-top: 10px;
+  width: 100%;
+  height: 3%;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
 /* Card Universal */
 
 .product-card {
@@ -93,7 +105,6 @@ nav ul {
   list-style: none;
   margin-right: 3rem;
   gap: 0px 70px;
-
 }
 
 nav a {
@@ -126,7 +137,7 @@ nav a {
 }
 
 .link-admin {
-  padding: 4px 12px 6px  4px ;
+  padding: 4px 12px 6px 4px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -138,7 +149,6 @@ nav a {
 .link-admin:hover {
   filter: invert(100%);
   box-shadow: 0px 1px 0px 1px rgb(189, 189, 189);
-
 }
 
 .nav-user {
@@ -223,13 +233,56 @@ nav a {
 
 .category-main {
   display: flex;
+  height: 89% auto;
+  min-height: 89%;
   width: 100%;
 }
 
 #category-form {
+  margin-top: 14px;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  width: 15%;
+  border: #a0a0a05d solid 1px;
+}
+
+.category-form-element {
   display: flex;
   flex-direction: column;
-  width: 20%;
+  gap: 8px 0px;
+  width: 65%;
+  text-transform: capitalize;
+}
+
+.category-form-element input[type="radio"] {
+  color: #000000;
+}
+
+.category-form-element > h1 {
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin: 20px 0xp;
+}
+
+#category-form button {
+  margin-top: 4px;
+  background-color: white;
+  border: #575757 1px solid;
+  font-size: 0.8rem;
+  color: #202020;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 6px;
+}
+
+#category-form button:hover {
+  color: white;
+  background-color: #000000;
 }
 
 .category-form-element {
@@ -558,6 +611,47 @@ nav a {
   justify-content: space-between;
 }
 
+.main-admin-add button,
+.main-admin-edit button {
+  align-self: start;
+  background-color: white;
+  border: #575757 1px solid;
+  font-size: 0.8rem;
+  color: #202020;
+  font-weight: 500;
+  padding: 10px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 6px;
+}
+
+.main-admin-add a,
+.main-admin-edit a {
+  color: #8d8d8d;
+}
+
+.main-admin-add a:hover,
+.main-admin-edit a:hover {
+  color: #000000;
+}
+
+.main-admin-add button:hover,
+.main-admin-edit button:hover {
+  color: white;
+  background-color: #000000;
+}
+
+.main-admin-edit .container-price input,
+.main-admin-add .container-price input {
+  width: 75%;
+}
+
+.main-admin-edit .container-button {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Clases solo de Detail Edit */
 
 .back-admin-edit {
@@ -657,10 +751,10 @@ nav a {
 
 .container-add-product {
   display: flex;
-  gap: 0px 12px;
+  gap: 0px 14px;
 }
 
-.container-add-product button {
+.container-add-product a{
   background-color: transparent;
   border: #575757 1px solid;
   color: #202020;
@@ -668,9 +762,10 @@ nav a {
   font-weight: 500;
   padding: 10px 10px;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.container-add-product button:hover {
+.container-add-product a:hover {
   color: white;
   border: black 1px solid;
   background-color: black;
@@ -679,7 +774,10 @@ nav a {
 .container-info {
   display: flex;
   align-items: center;
+  gap: 0px 4px;
 }
+
+.detail-article .container-price {display: flex;flex-direction: column;}
 
 .container-detail-price {
   display: flex;

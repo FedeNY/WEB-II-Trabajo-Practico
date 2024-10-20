@@ -126,6 +126,12 @@ switch ($params[0]) {
     case 'register':
         $controller = new RegisterController;
         $controller->register();break;
+
+    case 'buy' :
+        sessionAuthMiddleware($res, false);
+        $controller = new HomeController();
+        $controller->getProductsHome();
+        break;
     default:
         echo ('404 Page not found');
         break;
