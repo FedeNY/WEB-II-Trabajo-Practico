@@ -30,5 +30,16 @@ Este proyecto es una base de datos para un e-commerce de venta de celulares. Las
 
  <h2>Diagrama de la base de datos y el flujo de la pagina</h2>
 
-<img src="![image](https://github.com/user-attachments/assets/1183fd1c-d4a6-4579-b455-dac5660cb094)" width="70%" />
+![image](https://github.com/user-attachments/assets/0dca1b5f-9523-4208-a08f-65812b9ef3f8)
 
+<h2>Datos a tener en cuenta</h2>
+
+<ul> 
+ <li>**Herramientas de Administrador**: Las herramientas se encuentran en la página Administrador, que solo se muestra una vez que el usuario ha iniciado sesión.</li> 
+ 
+ <li>**Session Start**: Diferente a lo que nos impartieron en la clase, la sesión se inicia por primera vez cuando el usuario entra a la página, creando un rol que es el de "invitado". Tuve que realizarlo así para que no hubiera conflictos en el componente nav por falta de datos de sesión.</li> 
+ 
+ <li>**Componente nav**: El nav fue puesto fuera del switch, ya que estará presente en la mayoría de las páginas, excepto en login y register, ya que esas páginas tienen redirecciones propias.</li> <li>**Función de compra**: Por ahora, esa función todavía no está vigente, aunque la tabla y relación están creadas, como se puede apreciar en el diagrama. No es requerida, por lo que tengo entendido, para esta etapa del proyecto. Aun así, si un usuario intenta comprar y no está logueado, será redireccionado a la página de login para registrarse o iniciar sesión si lo requiere.</li> 
+ 
+ <li>**Register**: El registro es funcional; si bien no tiene un mensaje de error, cumple la función de comparar y confirmar la contraseña para luego ser encriptada. Si se intenta registrarse con un email o nombre de usuario ya registrado, lanzará un error y no podrá registrarse, ya que son datos únicos.</li> 
+</ul>
