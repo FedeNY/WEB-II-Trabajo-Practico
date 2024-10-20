@@ -30,7 +30,7 @@ Este proyecto es una base de datos para un e-commerce de venta de celulares. Las
         <li><strong>Carrito y compras</strong>: Facilita la selección de productos y el proceso de compra, registrando los pedidos en la base de datos. (Falta implementar, por ahora no se pidió en el proyecto).</li>
     </ul>
 
- <h2>Diagrama de la base de datos y el flujo de la pagina</h2>
+ <h2>Diagrama de la base de datos</h2>
 
 ![image](https://github.com/user-attachments/assets/0dca1b5f-9523-4208-a08f-65812b9ef3f8)
 
