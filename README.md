@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/0dca1b5f-9523-4208-a08f-65812b9ef3f8)<h1>  # WEB-II-Trabajo-Practico - Tienda de Celulares 📱 </h1>
+<h1>  # WEB-II-Trabajo-Practico - Tienda de Celulares 📱 </h1>
 
 <br>
 
