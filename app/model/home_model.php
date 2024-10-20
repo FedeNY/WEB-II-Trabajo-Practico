@@ -1,22 +1,13 @@
 <?php
+require_once 'app/model/db_connect.php';
 
-
-class HomeModel
+class HomeModel extends ConectDB
 {
-
-
-
-    private function getConection()
-    {
-        return new PDO('mysql:host=localhost;dbname=g160_db_prueba_tienda;charset=utf8', 'root', '');
-    }
 
     function getNewsHome()
     {
-    
-        $db = $this->getConection();
 
-        $query = $db->prepare('SELECT * FROM product WHERE offer != 0 AND stock = 1  ORDER BY id DESC LIMIT 5 ');
+        $query = $this->db->prepare('SELECT * FROM product WHERE offer != 0 AND stock = 1  ORDER BY id DESC LIMIT 5 ');
 
         $query->execute();
 
@@ -30,9 +21,7 @@ class HomeModel
     function getProductHome()
     {
 
-        $db = $this->getConection();
-
-        $query = $db->prepare('SELECT * FROM product WHERE stock = 1  LIMIT 11');
+        $query = $this->db->prepare('SELECT * FROM product WHERE stock = 1  LIMIT 11');
 
         $query->execute();
 

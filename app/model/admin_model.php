@@ -1,26 +1,20 @@
 <?php
 
 
+require_once 'app/model/db_connect.php';
 
 
 
 
-
-class AdminModel
+class AdminModel extends ConectDB
 {
 
 
-
-    private function getConection()
-    {
-        return new PDO('mysql:host=localhost;dbname=g160_db_prueba_tienda;charset=utf8', 'root', '');
-    }
-
     function getCategory()
     {
-        $db = $this->getConection();
 
-        $query = $db->prepare('SELECT DISTINCT brand  FROM category;');
+
+        $query = $this->db->prepare('SELECT DISTINCT brand  FROM category;');
 
         $query->execute();
 
@@ -33,9 +27,8 @@ class AdminModel
 
     function getProducts()
     {
-        $db = $this->getConection();
 
-        $query = $db->prepare('SELECT * FROM product');
+        $query = $this->db->prepare('SELECT * FROM product');
 
         $query->execute();
 
@@ -47,9 +40,7 @@ class AdminModel
 
     function sendCategory($brand)
     {
-        $db = $this->getConection();
-
-        $query = $db->prepare('INSERT INTO `category` (`brand`) VALUES (?)');
+        $query = $this->db->prepare('INSERT INTO `category` (`brand`) VALUES (?)');
 
         $query->execute([$brand]);
     }
@@ -57,9 +48,9 @@ class AdminModel
 
     function deleteCategory($brand)
     {
-        $db = $this->getConection();
 
-        $query = $db->prepare('DELETE FROM category WHERE `category`.`brand`= ?');
+
+        $query = $this->db->prepare('DELETE FROM category WHERE `category`.`brand`= ?');
 
         $query->execute([$brand]);
     }

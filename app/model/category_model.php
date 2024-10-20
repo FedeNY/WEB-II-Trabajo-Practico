@@ -1,24 +1,15 @@
 <?php
 
+require_once 'app/model/db_connect.php';
 
-class CategoryModel
-{
-
-
-
-    private function getConection()
-    {
-        return new PDO('mysql:host=localhost;dbname=g160_db_prueba_tienda;charset=utf8', 'root', '');
-    }
+class CategoryModel extends ConectDB {
 
 
 
     function getProducts()
     {
 
-        $db = $this->getConection();
-
-        $query = $db->prepare("SELECT * FROM product");
+        $query =$this->db->prepare("SELECT * FROM product");
 
         $query->execute();
 
@@ -28,8 +19,7 @@ class CategoryModel
     }
     function getProductFilter($brand)
     {
-        $db = $this->getConection();
-        $query = $db->prepare("
+        $query = $this->db->prepare("
         SELECT * FROM product
         WHERE (brand = ? OR ? = '') 
     ");
@@ -43,9 +33,7 @@ class CategoryModel
     function getCategory()
     {
 
-        $db = $this->getConection();
-
-        $query = $db->prepare('SELECT DISTINCT brand FROM category');
+        $query = $this->db->prepare('SELECT DISTINCT brand FROM category');
 
         $query->execute();
 
@@ -57,3 +45,4 @@ class CategoryModel
 
 
 }
+

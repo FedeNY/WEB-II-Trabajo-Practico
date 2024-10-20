@@ -1,17 +1,14 @@
 <?php
 
-class RegisterModel
-{
-    private function getConection()
-    {
-        return new PDO('mysql:host=localhost;dbname=g160_db_prueba_tienda;charset=utf8', 'root', '');
-    }
+require_once 'app/model/db_connect.php';
 
+class RegisterModel extends ConectDB
+{
 
     function sendRegister($user)
     {
-        $db = $this->getConection();
-        $query = $db->prepare('INSERT INTO `user` (`id`,`img_profile`,`name`,`email`,`password`) VALUEs (NULL,?,?,?,?)');
+
+        $query = $this->db->prepare('INSERT INTO `user` (`id`,`img_profile`,`name`,`email`,`password`) VALUEs (NULL,?,?,?,?)');
         $query->execute($user);
     }
 }
