@@ -159,11 +159,8 @@
               -- Volcado de datos para la tabla `user`
               --
 
-              INSERT INTO `user` (`id`, `img_profile`, `name`, `email`, `password`, `rol`) VALUES
-              (1, 'https://plus.unsplash.com/premium_photo-1661405578751-dc9d663710bd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWRtaW58ZW58MHx8MHx8fDA%3D', 'admin', 'fede1782015@hotmail.com.ar', '$2y$10\$k53x7DbJXWlm1I.eU5A81evQBZ6TDOKm97SUYMw6aC3GaNByYdKES', 'admin'),
-              (3, 'https://images.unsplash.com/photo-1663544093605-31a537e5afe5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZ1bGwlMjBoZCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D', 'Soila', 'soila@hotmail.com.ar', '$2y$10\$jEMrq6zRWttgWK84H9fhkOnDXd/H7yaD5pH2B6BlipkcYNzhRV8j2', 'normal'),
-              (9, 'https://cdn-icons-png.flaticon.com/512/3736/3736502.png', 'Ema', 'ema178@hotmail.com', '$2y$10$2znfLe33HOW1g5Vui7SyieRu6JxDXZ3teHy0iO581B0RtrGUtR/oq', 'normal'),
-              (10, 'https://olympusv2.gg/cloud-tags-loop.svg', 'EmaNube', 'ema1728@hotmail.com', '$2y$10\$aZ8MwsVaOcpDA4OYd8yW9uadlk7nvsyHfyzSyRFn7nbB1IUpS.eLC', 'normal');
+               INSERT INTO `user` (`id`, `img_profile`, `name`, `email`, `password`, `rol`) VALUES
+              (1, 'https://ih1.redbubble.net/image.2955130987.9629/raf,360x360,075,t,fafafa:ca443f4786.jpg', 'webadmin', 'admin123@hotmail.com.ar', '$2y$10\$jHVYSbj6HnKTuXv9aAwxo.D.lYWeEBVQf11FnbH7GrQ5cY6QEh3Mu', 'admin');
 
               --
               -- Índices para tablas volcadas
