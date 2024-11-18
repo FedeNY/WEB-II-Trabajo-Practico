@@ -28,7 +28,6 @@ class UserController
     function login()
     {
 
-    
         $user = htmlspecialchars($_POST['user'], ENT_QUOTES, 'UTF-8');
         $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
     
@@ -36,14 +35,11 @@ class UserController
         $userFromDB = $this->model->getUserByName($user);
     
         if (!$userFromDB) {
-            $this->error->showError("El usuario no existe", "login", "/showLogin", 404);
+           return $this->error->showError("El usuario no existe", "login", "/showLogin", 404);
         }
-    
+
         // Verifica que la contraseña coincida
         if (password_verify($password, $userFromDB->password)) {
-            
-            session_start();
-
             $_SESSION['Id'] = $userFromDB->id;
             $_SESSION['Img'] = $userFromDB->img_profile;
             $_SESSION['User'] = $userFromDB->name;

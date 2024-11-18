@@ -26,10 +26,13 @@ class ProductController
     }
         // Obtiene productos en oferta y 11 ultimos productos para el home
     function getProductsHome()
-    {
+    {   
+        
         $arr = $this->model->getProductHome();
         $arrNews = $this->model->getNewsHome();
+
         $this->view->showHome($arr, $arrNews);
+
     }   // Obtiene productos filtrados por marca
     function getProductFilter()
     {
@@ -43,7 +46,7 @@ class ProductController
         if (!$brand) {
             $arr = $this->model->getProducts();
         } else {
-            $brandStatus = $this->modelCategory->getBrand($brand);
+            $brandStatus = $this->modelCategory->getBrandId($brand);
 
             if (!$brandStatus) {
                 //return $this->error->showError("Error marca no encontrada");
@@ -60,14 +63,15 @@ class ProductController
      function getProductId($id)
         {
             $arr = $this->model->getProductId($id);
-    
+            
             // Verifica si encontro el producto 
     
             if (!$arr)
                 return $this->error->showError("Producto no encontrado","home","/",404);
            
-    
-                $this->view->showDetailProduct($arr);
+                $brand = $this->modelCategory->getBrand($arr->id_brand);
+   
+                $this->view->showDetailProduct($arr,$brand->brand);
      }
      function getProductAll()
      {

@@ -2,13 +2,13 @@
 
 <?php require_once 'components/nav.phtml' ?>
 <body>
-    <?php foreach ($product as $element): ?>
+
         <main class="detail-main">
             <a class="detail-back-link" href="<?php echo BASE_URL ?>/category ?>"><- Volver</a>
                     <section class="detail-container">
                         <img src="<?= $element->img ?>" width="600px" alt="">
                         <article class="detail-article">
-                            <h4><?= $element->brand ?></h4>
+                            <h4><?= $brand ?></h4>
                             <h1><?= $element->name ?></h1>
                             <p><?= $element->description ?></p>
                             </div>
@@ -69,7 +69,7 @@
 
                             </div>
                             <div class="container-add-product">
-                                <a href="<?php echo BASE_URL ?>/buy/<?= $element->id ?>">Comprar</a>
+                                <a href="<?php echo BASE_URL ?>/">Comprar</a>
                                 <div class="container-info"><svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -81,8 +81,6 @@
                                 </div>
                             </div>
                         </article>
-                    <?php endforeach ?>
-
                     </section>
 
         </main>

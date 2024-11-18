@@ -3,7 +3,7 @@
 class UserView
 {
 
-    function showLogin($error = null)
+    function showLogin()
     {
         require_once 'template/login.phtml';
     }

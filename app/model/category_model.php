@@ -21,14 +21,21 @@ class CategoryModel extends ConectDB
         $status = $query->rowCount();
         return $status;
     } 
-
+    
     // Obtiene una categoria de la tabla category 
     function getBrand ($brand){
+        $query = $this->db->prepare('SELECT * FROM category WHERE id_category = ?');
+        $query->execute([$brand]);
+        $brand = $query->fetch(PDO::FETCH_OBJ);
+        return $brand;
+    }
+
+    // Obtiene un id categoria de la tabla category 
+    function getBrandId ($brand){
         $query = $this->db->prepare('SELECT id_category FROM category WHERE brand = ?');
         $query->execute([$brand]);
         $brand = $query->fetch(PDO::FETCH_OBJ);
         return $brand;
-
     }
 
     //Obtiene todas las categorias

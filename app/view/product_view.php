@@ -4,7 +4,7 @@
 class ProductView
 {
     function showHome($product, $offer)
-    {
+    {   
         require_once 'template/home.phtml';
     }
 
@@ -13,8 +13,10 @@ class ProductView
         require_once 'template/product.phtml';
     }
 
-    function showDetailProduct($product)
-    {
+    function showDetailProduct($element,$brand)
+    {      
+
+
         require_once 'template/detail.phtml';
     }
     function showProduct($product,$category)

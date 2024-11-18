@@ -56,7 +56,7 @@ class CategoryController
 
         $newBrand = strtolower($newBrand);
 
-        $brandStatus = $this->model->getBrand($newBrand);
+        $brandStatus = $this->model->getBrandId($newBrand);
 
         // verifica si existe ya una marca con ese nombre
 

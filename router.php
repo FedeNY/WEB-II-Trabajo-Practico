@@ -11,6 +11,7 @@ require_once 'app/middlewares/verify_auth_middleware.php';
 
 define('BASE_URL', 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
 $res = new Response();
+
 $action = 'home';
 
 if (!empty($_GET['action'])) {
@@ -70,20 +71,22 @@ $params = explode('/', $action);
 
 //Administrador de rutas
 
-
 switch ($params[0]) {
 
-    case 'home':
+    case 'home': 
+
         $controller = new ProductController();
         $controller->getProductsHome();
         break;
 
     case 'category':
+
         $controller = new ProductController();
         $controller->getProductFilter();
         break;
 
     case 'detail':
+
         $controller = new ProductController();
         $controller->getProductId($params[1]);
         break;
@@ -134,7 +137,7 @@ switch ($params[0]) {
         break;
 
     case 'addBrand':
-        $controller = new CategoryController();    
+        $controller = new CategoryController();
         $controller->createBrand();
         break;
 
@@ -170,6 +173,6 @@ switch ($params[0]) {
 
     default:
         $controller = new ErrorView();
-        $controller->showError("Pagina no encontrada","home","/",404);
+        $controller->showError("Pagina no encontrada", "home", "/", 404);
         break;
 }
