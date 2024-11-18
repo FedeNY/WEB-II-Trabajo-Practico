@@ -77,7 +77,7 @@ class CategoryController
     {
         $brand = htmlspecialchars($_POST['delete-brand'], ENT_QUOTES, 'UTF-8');
 
-        $idBrand = $this->model->getBrand($brand);
+        $idBrand = $this->model->getBrandId($brand);
 
         if (!$idBrand)
             return $this->error->showError("Error no se ha podido encontrar la marca", "product", "/product", 404);
