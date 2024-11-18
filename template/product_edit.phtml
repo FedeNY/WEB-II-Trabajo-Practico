@@ -1,7 +1,16 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="<?php echo BASE_URL ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/css/style.css">
+    <title>Tienda de Celulares</title>
+</head>
+
 <body>
     <main class="main-admin-edit">
-        <a class="back-admin-edit" href="<?php echo BASE_URL; ?>/admin">Volver</a>
-        <?php foreach ($products as $element): ?>
+        <a class="back-admin-edit" href="<?php echo BASE_URL; ?>/product">Volver</a>
             <form class="form-add-product" action="<?php echo BASE_URL ?>/update/<?= $element->id ?>" method="POST">
                 <div class="edit-container-img">
                     <img src="<?= $element->img ?>" width="100%" alt="img_phone_edit">
@@ -50,15 +59,15 @@
                         <div class="specifications">
                             <div><label for="camera">Camara</label><input step="any" required value="<?= $element->camera ?>" type="number" name="camera"></div>
                             <div><label for="system">Sistema</label><input step="any" value="<?= $element->system ?>" required type="text" name="system"></div>
-                            <div><label for="screen">Pantalla</label><input step="any" required  value="<?= $element->screen ?>" type="number" name="screen"></div>
+                            <div><label for="screen">Pantalla</label><input step="any" required value="<?= $element->screen ?>" type="number" name="screen"></div>
                         </div>
 
                         <div class="container-brand">
                             <div class="brand-select">
                                 <label for="brand-select">Marca</label>
                                 <select name="brand-select" id="brand-select">
-                                    <?php foreach ($category as $brands): ?>
-                                        <option value="<?= $brands->brand ?>" <?= $element->brand == $brands->brand ? "selected" : "" ?>><?= $brands->brand ?></option>
+                                    <?php foreach ($brandArr as $brands): ?>
+                                        <option value="<?= $brands->id_category ?>" <?= $brands->brand == $element->brand ? "selected" : "" ?>><?= $brands->brand ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
@@ -73,7 +82,7 @@
                         </div>
                         <div class="container-price">
 
-                            <div><label for="price">Price</label><input step="any" type="number"  value="<?= $element->price ?>"
+                            <div><label for="price">Price</label><input step="any" type="number" value="<?= $element->price ?>"
                                     name="price"></div>
                             <div><label for="offer">Oferta</label> <input step="any" type="number" min="0" max="99" value="<?= $element->offer ?>"
                                     name="offer"></div>
@@ -90,20 +99,18 @@
                                 <option value="0" <?= $element->quota == 0 ? "selected" : "" ?>>No</option>
                                 <option value="6" <?= $element->quota == 6 ? "selected" : "" ?>>6 Cuotas</option>
                                 <option value="12" <?= $element->quota == 12 ? "selected" : "" ?>>12 Cuotas</option>
-                                <option value="612" <?= $element->quota == 612 ? "selected" : "" ?>>6 y 12 Cuotas</option>
                             </select>
                         </div>
 
                         <div class="container-button">
                             <div>
-                            <button type="submit">Guardar</button>
-                            <a href="<?php echo BASE_URL ?>/admin">Cancelar</a>
+                                <button type="submit">Guardar</button>
+                                <a href="<?php echo BASE_URL ?>/admin">Cancelar</a>
                             </div>
                             <a href="<?php echo BASE_URL ?>/delete/<?= $element->id ?>">Borrar</a>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
             </form>
     </main>
 </body>

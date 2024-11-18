@@ -1,23 +1,16 @@
 <?php
 
-require_once 'app/controller/nav_controller.php';
-require_once 'app/controller/home_controller.php';
 require_once 'app/controller/category_controller.php';
-require_once 'app/controller/detail_controller.php';
-require_once 'app/controller/admin_controller.php';
-require_once 'app/controller/admin_add_controller.php';
-require_once 'app/controller/admin_edit_controller.php';
-
-require_once 'app/middleware/verify_session.php';
+require_once 'app/controller/product_controller.php';
+require_once 'app/controller/user_controller.php';
 require_once 'libs/response.php';
-require_once 'app/controller/login_controller.php';
-require_once 'app/controller/register_controller.php';
+require_once 'app/middlewares/session_auth_middleware.php';
+require_once 'app/middlewares/verify_auth_middleware.php';
+
+
 
 define('BASE_URL', 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']));
-
 $res = new Response();
-
-
 $action = 'home';
 
 if (!empty($_GET['action'])) {
@@ -26,88 +19,131 @@ if (!empty($_GET['action'])) {
 
 $params = explode('/', $action);
 
-// Si el usuario pasa por login no se ejecuta el nav
 
-if ($params[0] !== 'showLogin' && $params[0] !== 'showRegister') {
-    sessionAuthMiddleware($res, true);
-    $navcontroller = new NavCategoryController();
-    $navcontroller->getBrands();
-}
+// Tabla de rutas
+
+//las rutas estan ordenadas del mismo orden que en el switch usenlo de referencia
+
+/* Ruta----------------------Controlador----------------------Metodo----------------------Descripcion------------------------------------------------------------
+
+  /home                      product_controller               getProductsHome             Obtiene 5 productos en oferta y 11 de los ultimos productos con stock 
+
+  /category                  category_controller              getProductFilter            Filtra productos por Marca sino tiene un parametro trae todos     
+
+  /detail/:id                product_controller               getProductId                Obtiene un producto seleccionado y lo muestra en la pagina 
+
+  buy                        product_controller               buyProduct                  No tiene una funcionalidad real pero debe cargar datos de compra
+  
+  /product                   product_controller               getProductAll               Obtiene todos los productos
+  
+  /productAdd                product_controller               createProduct               Crea un productos con los  datos proporcionados                   
+
+  /productEdit/:id           product_controller               getProductIdEdit            Obtiene un producto seleccionado para poder editarlo                
+
+  /update                    product_controller               updateProduct               Actualiza el producto con la informacion nueva del form            
+
+  /delete                    product_controller               deleteProduct               Borra el producto seleccionado (se encuentra en la pagina edit)       
+           
+  /addBrand                  category_controller              createBrand                 Crea una nueva marca (solo si no existe en la db)                     
+
+  /deleteBrand               category_controller              deleteBrand                 Elimina una marca (solo si no tiene un producto asociado)             
+                                                                                                                                                                                                                                             
+  /showLogin                 user_controller                  showlogin                   Pagina donde puede iniciar sesion el usuario                          
+
+  /login                     user_controller                  login                       Recibe los datos del form y verifica si coinciden con la db
+
+  /logout                    user_controller                  logout                      Termina la sesion del usuario destruyendola
+
+  /logout                    user_controller                  logout                      Termina la sesion del usuario destruyendola
+
+  /showRegister              user_controller                  showRegister                Pagina donde se pueden completar datos para crear un usuario
+
+  /register                  user_controller                  register                    obtiene los datos del form y verifica que sean validos
+
+
+  */
+
+
+//Administrador de rutas
+
 
 switch ($params[0]) {
 
     case 'home':
-        $controller = new HomeController();
+        $controller = new ProductController();
         $controller->getProductsHome();
         break;
 
     case 'category':
-        if (isset($params[1]) && !empty($params[1])) {
-            $controller = new CategoryController();
-            $controller->getProductFilter($params[1]);
-        } else {
-            $controller = new CategoryController();
-            $controller->getProductFilter(null);
-        }
+        $controller = new CategoryController();
+        $controller->getProductFilter();
         break;
 
     case 'detail':
-        $controller = new DetailController();
-        $controller->getDetailProduct($params[1]);
+        $controller = new ProductController();
+        $controller->getProductId($params[1]);
         break;
 
-    case 'admin':
-        sessionAuthMiddleware($res, false);
-        if (isset($res->user->rol) && $res->user->rol == 'admin') {
-            if (isset($params[1]) && !empty($params[1])) {
-                $controller = new AdminAddController();
-                $controller->showToolAdd();
-            } else {
-                $controller = new AdminController();
-                $controller->showAdminProduct();
-            }
+    case 'buy':
+        $controller = new ProductController();
+        $controller->getProductsHome();
+        break;
+
+    case 'product':
+        if (isset($params[1]) && !empty($params[1])) {
+            $controller = new CategoryController();
+            $controller->showToolAdd();
         } else {
-            echo ('404 Page not found');
-        }
-        break;
-    case 'add':
-        sessionAuthMiddleware($res, false);
-        if (isset($res->user->rol) && $res->user->rol == 'admin') {
-            $controller = new AdminAddController();
-            $controller->sendProduct();
-        } else
-            echo ('No tienes los permisos suficientes para acceder a esta seccion');
+            $controller = new ProductController();
+            $controller->getProductAll();
+        };
         break;
 
-    case 'addBrand':
-        $controller = new AdminController;
-        $controller->createBrand();
+    case 'productAdd':
+        $controller = new ProductController();
+        $controller->showAddProduct();
         break;
 
-    case 'deleteBrand':
-        $controller = new AdminController;
-        $controller->deleteBrand();
-        break;
-
-    case 'edit':
-        $controller = new AdminEditController();
+    case 'productEdit':
+        $controller = new ProductController();
         $controller->showEditProduct($params[1]);
         break;
 
-    case 'delete':
-        $controller = new AdminEditController();
-        $controller->deleteAdminProduct($params[1]);;
+    case 'add':
+        $controller = new ProductController();
+        $controller->createProduct();
+        break;
+
+    case 'edit':
+        $controller = new ProductController();
+        $controller->getProductId($params[1]);
         break;
 
     case 'update':
-        $controller = new AdminEditController();
-        $controller->updateAdminProduct($params[1]);;
+        $controller = new ProductController();
+        $controller->updateProduct($params[1]);;
+        break;
+
+    case 'delete':
+        $controller = new ProductController();
+        $controller->deleteProduct($params[1]);;
+        break;
+
+    case 'addBrand':
+        $controller = new CategoryController();
+        //$controller->createBrand();
+        break;
+
+    case 'deleteBrand':
+        $controller = new CategoryController();
+        $controller->deleteBrand();
         break;
 
     case 'showLogin':
         $controller = new UserController();
         $controller->showlogin();
         break;
+
     case 'login':
         $controller = new UserController();
         $controller->login();
@@ -119,19 +155,15 @@ switch ($params[0]) {
         break;
 
     case 'showRegister':
-        $controller = new RegisterController;
+        $controller = new UserController;
         $controller->showRegister();
         break;
 
     case 'register':
-        $controller = new RegisterController;
-        $controller->register();break;
-
-    case 'buy' :
-        sessionAuthMiddleware($res, false);
-        $controller = new HomeController();
-        $controller->getProductsHome();
+        $controller = new UserController;
+        $controller->register();
         break;
+
     default:
         echo ('404 Page not found');
         break;

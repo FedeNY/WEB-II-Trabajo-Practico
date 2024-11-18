@@ -1,7 +1,10 @@
+<html>
+
+<?php require_once 'components/nav.phtml' ?>
 <body>
     <?php foreach ($product as $element): ?>
         <main class="detail-main">
-            <a class="detail-back-link" href="<?php echo BASE_URL ?>/category/<?php echo $element->brand ?>"><- Volver</a>
+            <a class="detail-back-link" href="<?php echo BASE_URL ?>/category ?>"><- Volver</a>
                     <section class="detail-container">
                         <img src="<?= $element->img ?>" width="600px" alt="">
                         <article class="detail-article">
@@ -52,10 +55,6 @@
                                             case 12:
                                                 echo "12 Cuotas";
                                                 break;
-                                            case 612:
-                                                echo "3 y 12 Cuotas";
-                                                break;
-
                                             default:
                                                 echo "no coincide con alguno";
                                                 break;

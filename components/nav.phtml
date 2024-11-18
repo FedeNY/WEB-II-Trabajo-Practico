@@ -9,16 +9,12 @@
     <ul>
         <li><a href="<?php echo BASE_URL; ?>/">Inicio</a></li>
         <li id="nav-category">
-            <a href="<?php echo BASE_URL; ?>/category">Celulares</a>
-            <div id="brand-container" class="hidden">
-                <?php foreach ($brand as $element): ?>
-                    <a href="<?php echo BASE_URL; ?>/category/<?php echo $element->brand ?>"><?= $element->brand ?></a>
-                <?php endforeach; ?>
-            </div>
+            <a href="<?php echo BASE_URL; ?>/category/">Celulares</a>
+
         </li>
         <?php
-        if (isset($_SESSION['Rol']) && $_SESSION['Rol'] === "admin") {
-            echo "<li ><a class='link-admin' href='" . BASE_URL . "/admin'>
+        if (!isset($_SESSION['id'])) {
+            echo "<li ><a class='link-admin' href='" . BASE_URL . "/product'>
             <svg width='24px' hight='24px' fill='rgb(189, 189, 189)' viewBox='0 0 1920 1920' xmlns='http://www.w3.org/2000/svg'>
                 <g id='SVGRepo_bgCarrier' stroke-width='0'></g>
                 <g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g>
@@ -28,17 +24,16 @@
             </svg>
                 <p>Admin</p>
           </a></li>";
-
         }
         ?>
         <li class="nav-user">
             <a href="<?php echo BASE_URL; ?>/"><img src="<?php echo isset($_SESSION['Id']) ? $_SESSION['Img'] : 'https://cdn-icons-png.flaticon.com/512/3736/3736502.png'; ?>" alt="img_perfil">
-            <div >
-                <p><?php echo isset($_SESSION['Id']) ? $_SESSION['User'] : "Invitado"; ?></p>
-                <a class="nav-user-session" href="<?php echo BASE_URL . '/' . (isset($_SESSION['Id']) ? 'logout' : 'login'); ?>">
-                    <?php echo isset($_SESSION['Id']) ? "Cerrar sesión" : "Iniciar sesión"; ?>
-                </a>
-            </div>
+                <div>
+                    <p>Usuario</p>
+                    <a class="nav-user-session" href="<?php echo BASE_URL . '/' . (isset($_SESSION['Id']) ? 'logout' : 'showLogin'); ?>">
+                        <?php echo isset($_SESSION['Id']) ? "Cerrar sesión" : "Iniciar sesión"; ?>
+                    </a>
+                </div>
             </a>
         </li>
 

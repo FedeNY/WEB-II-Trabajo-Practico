@@ -3,8 +3,8 @@
 class NavCategoryView
 {
 
-    function BrandDisplay($brand)
+    function BrandDisplay()
     {
-        require 'components/nav.phtml';
+        require_once 'components/nav.phtml';
     }
 }

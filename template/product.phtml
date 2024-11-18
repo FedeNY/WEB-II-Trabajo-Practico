@@ -1,9 +1,11 @@
+<html>
+<?php require_once 'components/nav.phtml' ?>
 <body>
     <main>
         <article class="admin-container-tool">
             <h2>Herramientas</h2>
             <div>
-                <a href="<?php echo BASE_URL; ?>/admin/add">Agregar Producto</a>
+                <a href="<?php echo BASE_URL; ?>/productAdd">Agregar Producto</a>
                 <div class="admin-add-category">
                     <button class="add-category">Agegar Categoria</button>
                     <form action="<?php echo BASE_URL; ?>/addBrand" method="POST" class="form-add-category hidden">
@@ -23,14 +25,13 @@
 
                         <div>
                             <select name="delete-brand">
-                                <?php foreach ($arrBrand as $brand => $count): ?>
-                                    <option value="<?= $count == 0 ? $brand : "invalido" ?>"><?= $brand ?> (<?= $count ?> productos)</option>
+                                <?php foreach ($brand as $element): ?>
+                                    <option value="<?= $element->brand ?>"><?= $element->brand ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <button class="button-delete" type="submit">borrar</button>
                             <button type="button" class="cancel-delete-category">cancelar</button>
                         </div>
-
 
                         <p><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -38,7 +39,7 @@
                                 <g id="SVGRepo_iconCarrier">
                                     <path d="M12 7.01001V7.00002M12 17L12 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#8d8d8d99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </g>
-                            </svg>Solo podes borrar si el producto no tiene categoria</p>
+                            </svg>Solo podes borrar si la categoria no tiene producto</p>
 
                     </form>
 
@@ -47,7 +48,7 @@
         </article>
         <article class="admin-container-product">
             <?php foreach ($product as $element): ?>
-                <a href="<?php echo BASE_URL; ?>/edit/<?= $element->id ?>" class="product-card">
+                <a href="<?php echo BASE_URL; ?>/productEdit/<?= $element->id ?>" class="product-card">
 
                     <img class="product-card-img" src="<?= $element->img ?>" alt="img_product_example">
 
@@ -77,9 +78,6 @@
                                         break;
                                     case 12:
                                         echo "12 Cuotas sin interés";
-                                        break;
-                                    case 612:
-                                        echo "6 y 12 Cuotas sin interés";
                                         break;
                                 }
                                 ?>
