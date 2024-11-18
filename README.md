@@ -1,47 +1,27 @@
-<h1>  # WEB-II-Trabajo-Practico - Tienda de Celulares 📱 </h1>
+# WEB-II-Trabajo-Práctico - Tienda de Celulares #Reentrega 📱
 
-<br>
+## Integrantes
 
-<h2>Integrantes</h2>
+**Número de grupo**: 160
 
-Numero de grupo : 160
+**Federico Gerardo Massolo**  
+**DNI**: 41675964
 
-Federico Gerardo Massolo  
+## Importante
 
-DNI : 41675964
+Lamentablemente no pude implementar todos los puntos obligatorios de la reentrega. Intenté implementar los middleware de todas las formas posibles, pero me fue imposible. Si llega a ser un motivo para desaprobar la reentrega, lo entiendo y agradecería si aún así se llegara a ver mi proyecto para recibir un feedback.
 
-<h2> Importante </h2>
- 
-mi compañero me informo que dejo la cursada
+## Diagrama de la base de datos
 
+![image](https://github.com/user-attachments/assets/49ac147e-033f-4aac-89dc-04d2571929d6)
 
-Javier Ignacion Rivarola  
+## Datos a tener en cuenta
 
-DNI : 37667283
+- **MVC**: El MVC fue refactorizado para definir claramente los roles de cada modelo y controlador de cada tabla, así como las vistas fueron agrupadas según qué controlador estén usando. Ejemplo: vista de home en `product_view`.
+  
+- **Tabla de rutas más clara**: Fue implementada una tabla que contiene los endpoints, controlador, método y una breve descripción de cada una de las rutas separadas por su modelo para mayor claridad.
+  
+- **Control de errores**: Fue implementada una vista que ocurre cuando se produce un error en alguna solicitud, mostrando un breve texto sobre el error y su status.
+  
+- **Nueva relación de producto con la tabla categoría**: Ahora la marca de producto va a estar asociada a un valor en una tabla de categoría.
 
-<h2>Introduccion</h2>
-
-Este proyecto es una base de datos para un e-commerce de venta de celulares. Las funcionalidades más destacables son:
-     <ul>
-        <li><strong>Base de datos de productos</strong>: Almacena y gestiona información detallada sobre los celulares, incluyendo características como marca, modelo, precio, etc.</li>
-        <hr>
-        <li><strong>Registro y login</strong>: Permite a los usuarios crear cuentas y acceder a las mismas (los usuarios registrados podrán realizar compras más adelante).</li>
-        <hr>
-        <li><strong>Carrito y compras</strong>: Facilita la selección de productos y el proceso de compra, registrando los pedidos en la base de datos. (Falta implementar, por ahora no se pidió en el proyecto).</li>
-    </ul>
-
- <h2>Diagrama de la base de datos</h2>
-
-![image](https://github.com/user-attachments/assets/0dca1b5f-9523-4208-a08f-65812b9ef3f8)
-
-<h2>Datos a tener en cuenta</h2>
-
-<ul> 
- <li><strong>Herramientas de Administrador</strong>: Las herramientas se encuentran en la página Administrador, que solo se muestra una vez que el usuario ha iniciado sesión.</li> 
- <hr>
- <li><strong>Session Start</strong>: Diferente a lo que nos impartieron en la clase, la sesión se inicia por primera vez cuando el usuario entra a la página, creando un rol que es el de "invitado". Tuve que realizarlo así para que no hubiera conflictos en el componente nav por falta de datos de sesión.</li> 
- <hr>
- <li><strong>Componente nav</strong>: El nav fue puesto fuera del switch, ya que estará presente en la mayoría de las páginas, excepto en login y register, ya que esas páginas tienen redirecciones propias.</li> 
- <hr>
- <li><strong>Función de compra</strong>: Por ahora, esa función todavía no está vigente, aunque la tabla y relación están creadas, como se puede apreciar en el diagrama. No es requerida, por lo que tengo entendido, para esta etapa del proyecto. Aun así, si un usuario intenta comprar y no está logueado, será redireccionado a la página de login para registrarse o iniciar sesión si lo requiere.</li> 
- <hr>
