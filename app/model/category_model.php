@@ -5,10 +5,8 @@ require_once 'app/model/db_connect.php';
 class CategoryModel extends ConectDB
 {
 
-    // Solicitudes C.R.U.D orientadas a las categorias
-        
     // Crea una nueva categoria en la DB
-    function sendCategory($brand){
+    function addBrand($brand){
         $query = $this->db->prepare('INSERT INTO `category` (`brand`) VALUES (?)');
         $query->execute([$brand]);
         $id = $this->db->lastInsertId();
@@ -16,7 +14,7 @@ class CategoryModel extends ConectDB
     }
 
     // Borra la categoria seleccionada
-  function deleteCategory($brand)
+    function deleteBrand($brand)
     {
         $query = $this->db->prepare('DELETE FROM category WHERE `category`.`brand`= ?');
         $query->execute([$brand]);
@@ -25,7 +23,6 @@ class CategoryModel extends ConectDB
     } 
 
     // Obtiene una categoria de la tabla category 
-
     function getBrand ($brand){
         $query = $this->db->prepare('SELECT id_category FROM category WHERE brand = ?');
         $query->execute([$brand]);
@@ -34,6 +31,7 @@ class CategoryModel extends ConectDB
 
     }
 
+    //Obtiene todas las categorias
     function getAllBrand(){
         $query = $this->db->prepare('SELECT * FROM category');
         $query->execute();
@@ -41,8 +39,8 @@ class CategoryModel extends ConectDB
         return $arr; 
     }
 
-    // Obtiene las categorias EXISTENTES de los productos
-    function getCategoryProduct()
+    // Obtiene unicamente las marcas
+    function getBrandProduct()
     {
         $query = $this->db->prepare('SELECT DISTINCT brand FROM category');
         $query->execute();

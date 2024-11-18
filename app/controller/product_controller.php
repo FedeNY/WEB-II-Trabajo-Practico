@@ -24,7 +24,6 @@ class ProductController
         $this->view = new ProductView();
 
     }
-
         // Obtiene productos en oferta y 11 ultimos productos para el home
     function getProductsHome()
     {
@@ -160,7 +159,7 @@ class ProductController
         $status = $this->model->updateProduct($product);
 
         if(!$status)
-            return $this->error->showError("Error no se ha podido actualizar el producto","/product",500);
+            return $this->error->showError("Error no se ha podido actualizar el producto o no se cambio ningun valor","/product",500);
 
         header("Location:" . BASE_URL . "/product");
     }

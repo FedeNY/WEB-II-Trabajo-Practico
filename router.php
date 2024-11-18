@@ -26,6 +26,8 @@ $params = explode('/', $action);
 
 /* Ruta----------------------Controlador----------------------Metodo----------------------Descripcion------------------------------------------------------------
 
+  # Product
+
   /home                      product_controller               getProductsHome             Obtiene 5 productos en oferta y 11 de los ultimos productos con stock 
 
   /category                  category_controller              getProductFilter            Filtra productos por Marca sino tiene un parametro trae todos     
@@ -40,11 +42,17 @@ $params = explode('/', $action);
 
   /update                    product_controller               updateProduct               Actualiza el producto con la informacion nueva del form            
 
-  /delete                    product_controller               deleteProduct               Borra el producto seleccionado (se encuentra en la pagina edit)       
+  /delete                    product_controller               deleteProduct               Borra el producto seleccionado (se encuentra en la pagina edit)    
+  
+  
+  # Categoria - Brand
            
   /addBrand                  category_controller              createBrand                 Crea una nueva marca (solo si no existe en la db)                     
 
-  /deleteBrand               category_controller              deleteBrand                 Elimina una marca (solo si no tiene un producto asociado)             
+  /deleteBrand               category_controller              deleteBrand                 Elimina una marca (solo si no tiene un producto asociado)
+  
+  
+  # User (No me funcionan los middlewares)
                                                                                                                                                                                                                                              
   /showLogin                 user_controller                  showlogin                   Pagina donde puede iniciar sesion el usuario                          
 
@@ -57,8 +65,6 @@ $params = explode('/', $action);
   /showRegister              user_controller                  showRegister                Pagina donde se pueden completar datos para crear un usuario
 
   /register                  user_controller                  register                    obtiene los datos del form y verifica que sean validos
-
-
   */
 
 
@@ -153,16 +159,17 @@ switch ($params[0]) {
         break;
 
     case 'showRegister':
-        $controller = new UserController;
+        $controller = new UserController();
         $controller->showRegister();
         break;
 
     case 'register':
-        $controller = new UserController;
+        $controller = new UserController();
         $controller->register();
         break;
 
     default:
-        echo ('404 Page not found');
+        $controller = new ErrorView();
+        $controller->showError("Pagina no encontrada","home","/",404);
         break;
 }

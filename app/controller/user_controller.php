@@ -27,7 +27,7 @@ class UserController
     }
     function login()
     {
-        session_start();
+
     
         $user = htmlspecialchars($_POST['user'], ENT_QUOTES, 'UTF-8');
         $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
@@ -41,7 +41,9 @@ class UserController
     
         // Verifica que la contraseña coincida
         if (password_verify($password, $userFromDB->password)) {
-           
+            
+            session_start();
+
             $_SESSION['Id'] = $userFromDB->id;
             $_SESSION['Img'] = $userFromDB->img_profile;
             $_SESSION['User'] = $userFromDB->name;

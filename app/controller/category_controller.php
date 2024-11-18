@@ -41,7 +41,7 @@ class CategoryController
     function showProduct()
     {
         $arr = $this->modelProduct->getProducts();
-        $brand = $this->model->getCategoryProduct();
+        $brand = $this->model->getBrandProduct();
         $this->viewProduct->showProductView($arr, $brand);
     }
 
@@ -63,7 +63,7 @@ class CategoryController
         if ($brandStatus)
             return $this->error->showError("Error la marca ya existe", "product", "/product", 400);
 
-        $status = $this->model->sendCategory($newBrand);
+        $status = $this->model->addBrand($newBrand);
 
         if (!$status)
             return $this->error->showError("Error no se ha podido crear la marca", "product", "/product", 500);
@@ -87,7 +87,7 @@ class CategoryController
         if ($product)
             return $this->error->showError("Error esta marca tiene productos asignados", "product", "/product", 400);
 
-        $status = $this->model->deleteCategory($brand);
+        $status = $this->model->deleteBrand($brand);
 
         if (!$status)
             return $this->error->showError("Error no se ha podido borrar la marca", "product", "/product", 500);
