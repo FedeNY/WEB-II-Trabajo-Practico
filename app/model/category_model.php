@@ -7,21 +7,22 @@ class CategoryModel extends ConectDB
 
     // Solicitudes C.R.U.D orientadas a las categorias
         
-    
-        
-
     // Crea una nueva categoria en la DB
     function sendCategory($brand){
         $query = $this->db->prepare('INSERT INTO `category` (`brand`) VALUES (?)');
         $query->execute([$brand]);
+        $id = $this->db->lastInsertId();
+        return $id;
     }
 
     // Borra la categoria seleccionada
-    function deleteCategory($brand)
+  function deleteCategory($brand)
     {
         $query = $this->db->prepare('DELETE FROM category WHERE `category`.`brand`= ?');
         $query->execute([$brand]);
-    }
+        $status = $query->rowCount();
+        return $status;
+    } 
 
     // Obtiene una categoria de la tabla category 
 
@@ -39,15 +40,6 @@ class CategoryModel extends ConectDB
         $arr = $query->fetchAll(PDO::FETCH_OBJ);
         return $arr; 
     }
-
-
-/*     function getCategory($brand)
-    {
-        $query = $this->db->prepare('SELECT brand FROM category WHERE brand = ?');
-        $query->execute([$brand]);
-        $arr = $query->fetch(PDO::FETCH_OBJ);
-        return $arr;
-    } */
 
     // Obtiene las categorias EXISTENTES de los productos
     function getCategoryProduct()

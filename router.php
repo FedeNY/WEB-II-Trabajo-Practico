@@ -31,8 +31,6 @@ $params = explode('/', $action);
   /category                  category_controller              getProductFilter            Filtra productos por Marca sino tiene un parametro trae todos     
 
   /detail/:id                product_controller               getProductId                Obtiene un producto seleccionado y lo muestra en la pagina 
-
-  buy                        product_controller               buyProduct                  No tiene una funcionalidad real pero debe cargar datos de compra
   
   /product                   product_controller               getProductAll               Obtiene todos los productos
   
@@ -75,7 +73,7 @@ switch ($params[0]) {
         break;
 
     case 'category':
-        $controller = new CategoryController();
+        $controller = new ProductController();
         $controller->getProductFilter();
         break;
 
@@ -130,8 +128,8 @@ switch ($params[0]) {
         break;
 
     case 'addBrand':
-        $controller = new CategoryController();
-        //$controller->createBrand();
+        $controller = new CategoryController();    
+        $controller->createBrand();
         break;
 
     case 'deleteBrand':

@@ -4,6 +4,7 @@
 require_once 'app/model/product_model.php';
 require_once 'app/model/category_model.php';
 require_once 'app/view/product_view.php';
+require_once 'app/view/error_view.php';
 
 class ProductController
 {
@@ -30,6 +31,31 @@ class ProductController
         $arr = $this->model->getProductHome();
         $arrNews = $this->model->getNewsHome();
         $this->view->showHome($arr, $arrNews);
+    }   // Obtiene productos filtrados por marca
+    function getProductFilter()
+    {
+
+        if (!isset($_POST['brand']) || $_POST['brand'] == "all") {
+            $brand = null;
+        } else {
+            $brand = htmlspecialchars($_POST['brand'], ENT_QUOTES, 'UTF-8');
+        }
+
+        if (!$brand) {
+            $arr = $this->model->getProducts();
+        } else {
+            $brandStatus = $this->modelCategory->getBrand($brand);
+
+            if (!$brandStatus) {
+                //return $this->error->showError("Error marca no encontrada");
+            }
+
+            $arr = $this->model->getProductFilter($brandStatus->id_category);
+        }
+
+        $brandCategory = $this->modelCategory->getAllBrand();
+
+        $this->view->showProduct($arr, $brandCategory);
     }
         // Obtiene un producto por id y dependiendo de quien lo pida es para editar o ver los detalles
      function getProductId($id)

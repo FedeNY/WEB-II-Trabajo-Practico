@@ -2,12 +2,15 @@
 
 require_once 'app/model/category_model.php';
 require_once 'app/model/product_model.php';
+require_once 'app/view/error_view.php';
 require_once 'app/controller/product_controller.php';
 
 class CategoryController
 {
     private $model;
     private $view;
+
+    private $error;
 
     private $viewProduct;
 
@@ -16,8 +19,10 @@ class CategoryController
     function __construct()
     {
         $this->model = new CategoryModel();
-        
+
         $this->view = new ProductView();
+
+        $this->error = new ErrorView();
 
         $this->modelProduct = new ProductModel();
     }
@@ -33,7 +38,6 @@ class CategoryController
     }
 
     // Obtener todos los Productos y Categorias
-
     function showProduct()
     {
         $arr = $this->modelProduct->getProducts();
@@ -42,98 +46,54 @@ class CategoryController
     }
 
     // Crear una Marca
-    /*     function createBrand()
+    function createBrand()
     {
         $newBrand = htmlspecialchars($_POST['new-brand'], ENT_QUOTES, 'UTF-8');
 
-        if (isset($newBrand)) {
-            $newBrand = strtolower($newBrand);
+        if (!isset($newBrand) || empty($newBrand))
+            return $this->error->showError("Marca no escrita", "product", "/product", 400);
 
-            $brandStatus = $this->model->getCategory($newBrand);
 
-            // verifica si existe ya una marca con ese nombre
+        $newBrand = strtolower($newBrand);
 
-            if (count($brandStatus) > 0) {
+        $brandStatus = $this->model->getBrand($newBrand);
 
-                echo "Error ya existe una categoria con ese nombre";
+        // verifica si existe ya una marca con ese nombre
 
-                sleep(5);
+        if ($brandStatus)
+            return $this->error->showError("Error la marca ya existe", "product", "/product", 400);
 
-                header("Location:" . BASE_URL . "/product");
+        $status = $this->model->sendCategory($newBrand);
 
-                die();
-            }
+        if (!$status)
+            return $this->error->showError("Error no se ha podido crear la marca", "product", "/product", 500);
 
-            $this->model->sendCategory($newBrand);
-
-            echo "Procesando categoria...";
-
-            // verifica si se creo la marca
-
-            $statusBrand = $this->getBrand($newBrand);
-
-            if ($statusBrand !== 1) {
-
-                echo "Error la marca no fue creada.";
-            } else {
-
-                echo "La Marca fue creada con exito.";
-            }
-
-            sleep(5);
-
-            header("Location:" . BASE_URL . "/product");
-
-            die();
-        }
+        header("Location:" . BASE_URL . "/product");
+        die();
     }
- */
-    /*  function getBrand($brand)
-    {
-        $brandStatus = $this->model->getCategory($brand);
-        return $brandStatus;
-    }
- */
 
     // Borrar una Marca (Solo si no tiene productos)
     function deleteBrand()
     {
         $brand = htmlspecialchars($_POST['delete-brand'], ENT_QUOTES, 'UTF-8');
 
-        if ($brand !== 'invalido') {
-            $this->model->deleteCategory($brand);
-        }
+        $idBrand = $this->model->getBrand($brand);
+
+        if (!$idBrand)
+            return $this->error->showError("Error no se ha podido encontrar la marca", "product", "/product", 404);
+
+        $product = $this->modelProduct->getProductFilter($idBrand->id_category);
+
+        if ($product)
+            return $this->error->showError("Error esta marca tiene productos asignados", "product", "/product", 400);
+
+        $status = $this->model->deleteCategory($brand);
+
+        if (!$status)
+            return $this->error->showError("Error no se ha podido borrar la marca", "product", "/product", 500);
 
         header("Location:" . BASE_URL . "/product");
 
         die();
-    }
-
-
-    // Filtro pagina Category
-    function getProductFilter()
-    {
-
-        if (!isset($_POST['brand']) || $_POST['brand'] == "all") {
-            $brand = null;
-        } else {
-            $brand = htmlspecialchars($_POST['brand'], ENT_QUOTES, 'UTF-8');
-        }
-
-        if (!$brand) {
-            $arr = $this->modelProduct->getProducts();
-        } else {
-            $brandStatus = $this->model->getBrand($brand);
-
-            if (!$brandStatus) {
-                //return $this->error->showError("Error marca no encontrada");
-            }
-
-            $arr = $this->modelProduct->getProductFilter($brandStatus->id_category);
-        }
-
-        $brandCategory = $this->model->getAllBrand();
-
-        $this->view->showProduct($arr, $brandCategory);
     }
 }
